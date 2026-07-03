@@ -12,14 +12,15 @@ This repository tracks automated test and build failures for CI/CD pipelines. Al
 
 ### ✅ Correct:
 - Build 253 → CREATE investigations/copilot-findings/build-253-analysis.md
-
-### ❌ Wrong:
-- Build 253 fails → UPDATE investigations/copilot-findings/build-252-analysis.md
-
 - **Always** read `AGENTS.md` before performing any task in this repository; it is the authoritative guide for conventions and scope.
 - **Do not** edit files in `reports/build-failures/` — these are auto-generated artefacts.
 - **Do** create NEW files in `investigations/copilot-findings/` for each unique build number — never edit existing ones.
 - **Do** create or update files in `dashboards/` based on the latest reports.
+
+### ❌ Wrong:
+- Build 253 fails → UPDATE investigations/copilot-findings/build-252-analysis.md
+
+
 
 ## Generating an Investigation
 When asked to analyse a build failure:
