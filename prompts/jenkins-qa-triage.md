@@ -37,11 +37,14 @@ For each root cause, show:
 
 ### <Root Cause Name>
 
+Use only the sections below for each root cause. Do not append extra sections.
+
 **Affected Features:**
 - Feature1.feature
 - Feature2.feature
 
 **Affected Scenarios:**
+Include every affected scenario with the test case ID.
 - Scenario Name (TC01)
 - Scenario Name (TC05)
 - Scenario Name (TC14)
