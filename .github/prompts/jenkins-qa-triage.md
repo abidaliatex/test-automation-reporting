@@ -1,12 +1,3 @@
-# Jenkins QA Triage Prompt
-
-Use this prompt with the Jenkins AI pipeline step (or any LLM integration) to generate a concise root cause analysis from a build's test output.
-
----
-
-## Prompt
-
-```
 Analyze the latest Jenkins build and provide a concise QA triage report.
 
 Rules:
@@ -44,7 +35,6 @@ For each root cause, show:
 **Affected Scenarios:**
 - Scenario Name (TC01)
 - Scenario Name (TC05)
-- Scenario Name (TC14)
 
 **Failure Pattern:**
 discountType expected [RIALTO] found [null]
@@ -56,27 +46,3 @@ discountType expected [RIALTO] found [null]
 **Impact:** 15 failures
 
 **Confidence:** High / Medium / Low
-```
-
----
-
-## Usage in Jenkins Pipeline
-
-Reference this prompt file in your `Jenkinsfile` AI step. Pass it together with the build log or test report XML/JSON as context:
-
-```groovy
-stage('QA Triage') {
-    steps {
-        script {
-            def triagePrompt = readFile('prompts/jenkins-qa-triage.md')
-            // Pass triagePrompt + currentBuild test output to your AI provider step
-        }
-    }
-}
-```
-
-## Notes
-
-- The prompt is intentionally strict to avoid bloated output — do not relax the "under 2 pages" rule.
-- `Confidence` should reflect how clearly the evidence ties all grouped failures to a single root cause.
-- If a failure does not fit any group, list it under a catch-all **Unclassified** root cause group.
