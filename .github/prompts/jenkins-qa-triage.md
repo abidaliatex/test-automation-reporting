@@ -7,6 +7,8 @@ Rules:
 - Show only the most important evidence.
 - Do NOT generate long recommendations, ownership analysis, code guesses, or executive summaries.
 - Affected Scenarios: write all affected scenarios with the test case names.
+- Return only the sections shown in the output format below.
+- Keep each root cause group short and evidence-led.
 
 Output format:
 
@@ -28,10 +30,6 @@ For each root cause, show:
 
 ### <Root Cause Name>
 
-**Affected Features:**
-- Feature1.feature
-- Feature2.feature
-
 **Affected Scenarios:**
 - Scenario Name (TC01)
 - Scenario Name (TC05)
@@ -46,3 +44,7 @@ discountType expected [RIALTO] found [null]
 **Impact:** 15 failures
 
 **Confidence:** High / Medium / Low
+
+If any failure does not clearly fit a group, place it under:
+
+### Unclassified
