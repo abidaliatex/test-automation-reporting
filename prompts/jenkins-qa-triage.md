@@ -77,12 +77,6 @@ stage('QA Triage') {
 
 ## Notes
 
-- The prompt is intentionally strict to avoid bloated output — do not relax the "under 2 pages" rule.
+- The prompt is intentionally strict to avoid bloated output - do not relax the "under 2 pages" rule.
 - `Confidence` should reflect how clearly the evidence ties all grouped failures to a single root cause.
 - If a failure does not fit any group, list it under a catch-all **Unclassified** root cause group.
-
-## Build Details
-
-- Job Name: `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo`
-- Build Number: `251`
-- Build URL: <https://crossadv.atex.com/jenkins/job/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/251/>
