@@ -9,10 +9,10 @@
 ## Build Summary
 
 Build: automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #252
-Total Tests: 3 (reported in failure report)
+Total Tests: Unknown (3 failures reported)
 Passed: 0
 Failed: 3
-Pass Rate: 0%
+Pass Rate: 0 % (of reported tests)
 
 ---
 
