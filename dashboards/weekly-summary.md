@@ -46,4 +46,12 @@
 
 ---
 
+## Latest Build Triage Snapshot
+
+| Build | Date | Status | Triage |
+|---|---|---|---|
+| [#260](../reports/build-failures/build-260.md) | 2026-07-04 | UNSTABLE | [analysis](../investigations/copilot-findings/build-260-analysis.md) |
+
+---
+
 *This dashboard is regenerated weekly. Do not edit manually — rerun the weekly summary pipeline instead.*
