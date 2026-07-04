@@ -13,9 +13,9 @@
 
 | Test Suite / Feature | Scenario | Test Case | Result |
 |---|---|---|---|
-| `CASS TC4 Change Placement` | verify that order arrived in MH from rilato - placement | `tc_getMHTC03` | FAILED |
-| `CASS TC4 Change Placement` | verify that order arrived in MH from rilato - placement - after change | `tc_getMHTC03a` | FAILED |
-| `CASS TC4 Change Placement` | get order in rialto using prisa id- check if placement updated | `tc_getIntegrationRialto05b` | FAILED |
+| `CASS TC4 Change Placement` | verify that order arrived in MH from Rialto - placement | `tc_getMHTC03` | FAILED |
+| `CASS TC4 Change Placement` | verify that order arrived in MH from Rialto - placement - after change | `tc_getMHTC03a` | FAILED |
+| `CASS TC4 Change Placement` | get order in Rialto using prisa id- check if placement updated | `tc_getIntegrationRialto05b` | FAILED |
 
 ## Error Output
 

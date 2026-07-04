@@ -25,8 +25,8 @@ Pass Rate: 78.6%
 - `CASS TC4 Change Placement`
 
 **Affected Scenarios:**
-- verify that order arrived in MH from rilato - placement (`tc_getMHTC03`)
-- verify that order arrived in MH from rilato - placement - after change (`tc_getMHTC03a`)
+- verify that order arrived in MH from Rialto - placement (`tc_getMHTC03`)
+- verify that order arrived in MH from Rialto - placement - after change (`tc_getMHTC03a`)
 
 **Failure Pattern:**
 - `orders[0].printDetails.discountType` and related totals/commission fields differ from expected values in MH readback.
@@ -46,7 +46,7 @@ Pass Rate: 78.6%
 - `CASS TC4 Change Placement`
 
 **Affected Scenarios:**
-- get order in rialto using prisa id- check if placement updated (`tc_getIntegrationRialto05b`)
+- get order in Rialto using prisa id- check if placement updated (`tc_getIntegrationRialto05b`)
 
 **Failure Pattern:**
 - Rialto response returned mismatched status, depth, commission, and net pricing fields after update.
