@@ -56,6 +56,7 @@ Pass Rate: 78.6%
 - expected `orderHeader.statusFlags=[[PRELIMINARY]]`, found `[[]]`
 - expected `orderHeader.commissionAmount=[7750.00]`, found `[620.0]`
 - expected `orderAdDetails[0].depth=[184]`, found `[372]`
+- expected `orderAdDetails[0].priceNet=[250000.00]`, found `[249380.0]`
 - Failure occurred in the `Rialto\RialtoB2A\getRialtoB2A.csv` verification step after the Media House placement update.
 
 **Impact:** 1 failure
