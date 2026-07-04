@@ -5,7 +5,8 @@ This repository tracks automated test and build failures for CI/CD pipelines. Al
 
 ## Behaviour Guidelines
 - **Always** read `AGENTS.md` before performing any task in this repository; it is the authoritative guide for conventions and scope.
-- **Do not** edit files in `reports/build-failures/` — these are auto-generated artefacts.
+- **Do** create a new file in `reports/build-failures/build-<build-id>.md` using data retrieved from Jenkins MCP.
+- **Do not** edit existing files in `reports/build-failures/` each build gets its own new file.
 - **Do** create NEW files in `investigations/copilot-findings/` for each unique build number — never edit existing ones.
 - **Do** create or update files in `dashboards/` based on the latest reports.
 
