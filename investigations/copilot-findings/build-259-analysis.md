@@ -1,17 +1,17 @@
 # QA Triage Report — Build #259
 
-**Source build:** [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #259](https://crossadv.atex.com/jenkins/job/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/259/)  
-**Analysis date:** 2026-07-04  
+**Source build:** [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #259](https://crossadv.atex.com/jenkins/job/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/259/)<br>
+**Analysis date:** 2026-07-04<br>
 **Local report:** No auto-generated `reports/build-failures/build-259.md` was present in this repository snapshot.
 
 ---
 
 ## Build Summary
 
-Build: automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #259  
-Total Tests: 14  
-Passed: 11  
-Failed: 3  
+Build: automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #259<br>
+Total Tests: 14<br>
+Passed: 11<br>
+Failed: 3<br>
 Pass Rate: 78.6%
 
 ---
