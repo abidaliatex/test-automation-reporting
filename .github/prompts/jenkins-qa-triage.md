@@ -1,6 +1,7 @@
 Analyze the latest Jenkins build and provide a concise QA triage report.
 
 Rules:
+- Before doing anything, read and follow all instructions in .github/copilot-instructions.md
 - Keep the report under 2 pages.
 - Focus on investigation, not documentation.
 - Group failures by likely root cause.
