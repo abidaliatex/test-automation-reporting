@@ -1,6 +1,11 @@
 Analyze the SPECIFIC Jenkins build provided in the "Build Details" section at the TOP of this prompt.
-Do NOT get running builds.
-Do NOT use any other build number.
+## ⚠️ CRITICAL — Do This First:
+- Job Name and Build Number are the FIRST lines of this prompt.
+- Use ONLY these details to fetch the build from Jenkins.
+- Do NOT use running builds or any other build number.
+- Do NOT proceed if Job Name or Build Number is "unknown".
+- Do NOT use any other build number.
+
 
 Rules:
 - Before doing anything, read and follow all instructions in .github/copilot-instructions.md
