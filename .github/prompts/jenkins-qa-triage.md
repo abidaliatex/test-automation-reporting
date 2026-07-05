@@ -1,4 +1,4 @@
-Analyze the SPECIFIC Jenkins build provided in the Build Details section below.
+Analyze the SPECIFIC Jenkins build provided in the "Build Details" section at the end of this prompt.
 Do NOT get running builds.
 Do NOT use any other build number.
 
