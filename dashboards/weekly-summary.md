@@ -1,8 +1,8 @@
 # Weekly Test Failure Summary
 
-**Period:** 2026-06-20 → 2026-07-03  
-**Generated:** 2026-07-03  
-**Total builds:** 13 | **Failed builds:** 3 | **Pass rate:** 76.9 %
+**Period:** 2026-06-29 → 2026-07-05  
+**Generated:** 2026-07-05  
+**Total builds:** 2 | **Unstable builds:** 2 | **Pass rate (per test):** 78.6 %
 
 ---
 
@@ -10,47 +10,32 @@
 
 | Test Suite | Failures this week | Failures last week | Trend |
 |---|---|---|---|
-| `DiscountTypeTests` | 2 | 0 | ↑ |
-| `PricingIntegrationTests` | 1 | 0 | ↑ |
-| `PaymentServiceTests` | 2 | 0 | ↑ |
-| `IntegrationTests` | 1 | 0 | ↑ |
-| `HttpClientTests` | 2 | 0 | ↑ |
-| `ApiGatewayTests` | 1 | 0 | ↑ |
-| `UserAuthTests` | 0 | 1 | ↓ |
-| `ProductCatalogueTests` | 0 | 0 | → |
-| `OrderServiceTests` | 0 | 0 | → |
+| `CASS TC4 Change Placement` (MH readback — tc_getMHTC03) | 2 | 2 | → |
+| `CASS TC4 Change Placement` (MH readback — tc_getMHTC03a) | 2 | 2 | → |
+| `CASS TC4 Change Placement` (Rialto readback — tc_getIntegrationRialto05b) | 2 | 2 | → |
 
 ---
 
-## Failed Builds
+## Unstable Builds This Week
 
 | Build | Date | Root Cause Summary | Investigation |
 |---|---|---|---|
-| [#250](../reports/build-failures/build-250.md) | 2026-06-25 | Test stubs not updated after timeout config change | [analysis](../investigations/copilot-findings/build-250-analysis.md) |
-| [#251](../reports/build-failures/build-251.md) | 2026-06-26 | Breaking API change in HTTP client major version bump | — |
-| [#252](../reports/build-failures/build-252.md) | 2026-07-03 | `discountType` returning null instead of RIALTO across all scenarios | [analysis](../investigations/copilot-findings/build-252-analysis.md) |
+| [#261](../reports/build-failures/build-261.md) | 2026-07-05 | Cross-system discount/commission mismatch in Rialto↔MH placement-change flow | [analysis](../investigations/copilot-findings/build-261-analysis.md) |
+| [#262](../reports/build-failures/build-262.md) | 2026-07-05 | Same 3 failures persist; commit "updated api version from 87 to 88" did not resolve | [analysis](../investigations/copilot-findings/build-262-analysis.md) |
 
 ---
 
 ## Key Observations
 
-- Build #252 introduced a new failure pattern: `discountType` returning `null` instead of the expected `RIALTO` value — this impacts both direct assertions and downstream pricing flows.
-- All three builds this week were caused by **changes to service contracts or configuration that were not reflected in the test layer**.
-- `PaymentServiceTests` and `HttpClientTests` remain high-risk from last week's failures; `DiscountTypeTests` is now a new risk area.
-
-## Recommended Actions
-
-1. Add a PR checklist item: *"Have test stubs and mocks been updated to match this change?"*
-2. Consider pinning major-version dependency upgrades behind a dedicated compatibility branch to allow incremental migration.
-3. Schedule a review of `ApiGatewayTests` initialisation logic — the `NullPointerException` in build #251 suggests fragile test setup.
-
----
+- The same 3 test cases (`tc_getMHTC03`, `tc_getMHTC03a`, `tc_getIntegrationRialto05b`) have been failing since build #246 — regression is persistent across API version bumps.
+- Root cause is a cross-system field mapping issue: `discountType` is not propagated correctly, and `statusFlags`/`commissionAmount` are stale after MH applies placement changes.
+- Build #262 upgraded the API version (87→88) but did not fix the underlying data sync problem.
 
 ## Latest Build Triage Snapshot
 
 | Build | Date | Status | Triage |
 |---|---|---|---|
-| [#261](../reports/build-failures/build-261.md) | 2026-07-05 | UNSTABLE | [analysis](../investigations/copilot-findings/build-261-analysis.md) |
+| [#262](../reports/build-failures/build-262.md) | 2026-07-05 | UNSTABLE | [analysis](../investigations/copilot-findings/build-262-analysis.md) |
 
 ---
 
