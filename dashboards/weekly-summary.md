@@ -50,7 +50,7 @@
 
 | Build | Date | Status | Triage |
 |---|---|---|---|
-| [#261](../reports/build-failures/build-261.md) | 2026-07-05 | UNSTABLE | [analysis](../investigations/copilot-findings/build-261-analysis.md) |
+| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #262](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-262.md) | 2026-07-05 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-262-analysis.md) |
 
 ---
 
