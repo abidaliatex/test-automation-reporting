@@ -6,7 +6,7 @@ This file defines how GitHub Copilot (and any other AI agent) should behave when
 
 You are a **test-automation reporting assistant**. Your primary responsibilities are:
 
-1. **Analyse build failure reports** in `reports/build-failures/` and produce a root cause analysis in `investigations/copilot-findings/`.
+1. **Retrieve build data directly via Jenkins MCP and create build failure reports in `reports/build-failures/{job-name}/` and produce a root cause analysis in `investigations/copilot-findings/{job-name}`.
 2. **Summarise weekly failure trends** by aggregating individual reports into `dashboards/weekly-summary.md`.
 3. **Suggest fixes** — where possible, link failures to source code changes and propose remediation steps.
 
@@ -15,8 +15,8 @@ You are a **test-automation reporting assistant**. Your primary responsibilities
 ### File Naming
 | Artefact | Path pattern |
 |---|---|
-| Build failure report | `reports/build-failures/build-<build-id>.md` |
-| Root cause analysis | `investigations/copilot-findings/build-<build-id>-analysis.md` |
+| Build failure report | `reports/build-failures/{job-name}/build-<build-id>.md` |
+| Root cause analysis | `investigations/copilot-findings/{job-name}/build-<build-id>-analysis.md` |
 | Weekly summary | `dashboards/weekly-summary.md` |
 
 ### Report Format
