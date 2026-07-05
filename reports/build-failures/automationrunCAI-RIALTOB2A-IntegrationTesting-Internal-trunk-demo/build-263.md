@@ -21,8 +21,8 @@ Pass Rate: 78.6%
 - MediaHouse basket/order verification
 
 **Affected Scenarios:**
-- verify that order arrived in MH from rilato - placement (`tc_getMHTC03`)
-- verify that order arrived in MH from rilato - placement - after change (`tc_getMHTC03a`)
+- verify that order arrived in MH from rialto - placement (`tc_getMHTC03`)
+- verify that order arrived in MH from rialto - placement - after change (`tc_getMHTC03a`)
 
 **Failure Pattern:**
 Post-change MH GET assertions return pricing/discount values inconsistent with expected fixtures.
@@ -57,9 +57,9 @@ Rialto GET validation returns different placement, discount, and pricing values 
 
 ## Failing Tests / Steps
 
-- `tc_getMHTC03` — verify that order arrived in MH from rilato - placement
-- `tc_getMHTC03a` — verify that order arrived in MH from rilato - placement - after change
-- `tc_getIntegrationRialto05b` — get order in rialto using prisa id- check if placement updated
+- `tc_getMHTC03` — verify that order arrived in MH from rialto - placement
+- `tc_getMHTC03a` — verify that order arrived in MH from rialto - placement - after change
+- `tc_getIntegrationRialto05b` — get order in rialto using prisa id - check if placement updated
 
 ## Error Output
 
