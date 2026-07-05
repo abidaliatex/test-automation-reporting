@@ -5,9 +5,9 @@ This repository tracks automated test and build failures for CI/CD pipelines. Al
 
 ## Behaviour Guidelines
 - **Always** read `AGENTS.md` before performing any task in this repository; it is the authoritative guide for conventions and scope.
-- **Do** create a new file in `reports/build-failures/build-<build-id>.md` using data retrieved from Jenkins MCP.
-- **Do not** edit existing files in `reports/build-failures/` each build gets its own new file.
-- **Do** create NEW files in `investigations/copilot-findings/` for each unique build number — never edit existing ones.
+- **Do** create a new file in `reports/build-failures/{job-name}/build-<build-id>.md` using data retrieved from Jenkins MCP.
+- **Do not** edit existing files in `reports/build-failures/{job-name}/` each build gets its own new file.
+- **Do** create NEW files in `investigations/copilot-findings/{job-name}/` for each unique build number — never edit existing ones.
 - **Do** create or update files in `dashboards/` based on the latest reports.
 
 ## ⚠️ CRITICAL — Investigation File Rules
@@ -18,20 +18,20 @@ This repository tracks automated test and build failures for CI/CD pipelines. Al
 - Use the EXACT build number from the prompt to name the file
 
 ### ✅ Correct:
-- Build 253 → CREATE `investigations/copilot-findings/build-253-analysis.md`
+- Build 253 → CREATE `investigations/copilot-findings/{job-name}/build-253-analysis.md`
 
 ### ❌ Wrong:
-- Build 253 arrives → UPDATE `investigations/copilot-findings/build-252-analysis.md`
+- Build 253 arrives → UPDATE `investigations/copilot-findings/{job-name}/build-252-analysis.md`
 
 ## Generating an Investigation
 When asked to analyse a build failure:
 
 1. Extract the build number from the prompt — this is your ONLY source of truth.
-2. Confirm `investigations/copilot-findings/build-{BUILD_NUMBER}-analysis.md` does NOT already exist.
-3. Locate the corresponding report in `reports/build-failures/build-<id>.md`.
+2. Confirm `investigations/copilot-findings/{job-name}/build-{BUILD_NUMBER}-analysis.md` does NOT already exist.
+3. Locate the corresponding report in `reports/build-failures/{job-name}/build-<id>.md`.
 4. Extract the failing test names, error messages, and stack traces.
 5. Correlate failures with recent commits or dependency changes if available.
-6. CREATE new file `investigations/copilot-findings/build-<id>-analysis.md` using format in `AGENTS.md`.
+6. CREATE new file `investigations/copilot-findings/{job-name}/build-<id>-analysis.md` using format in `AGENTS.md`.
 
 ## Generating the Weekly Summary
 When asked to produce the weekly summary:
