@@ -50,7 +50,7 @@
 
 | Build | Date | Status | Triage |
 |---|---|---|---|
-| [#260](../reports/build-failures/build-260.md) | 2026-07-04 | UNSTABLE | [analysis](../investigations/copilot-findings/build-260-analysis.md) |
+| [#261](../reports/build-failures/build-261.md) | 2026-07-05 | UNSTABLE | [analysis](../investigations/copilot-findings/build-261-analysis.md) |
 
 ---
 
