@@ -52,6 +52,7 @@
 |---|---|---|---|
 | [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #262](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-262.md) | 2026-07-05 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-262-analysis.md) |
 | [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #266](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-266.md) | 2026-07-05 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-266-analysis.md) |
+| [automationrunCAI-RIALTO-B2A-trunk #280](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-280.md) | 2026-07-05 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-280-analysis.md) |
 
 ---
 
