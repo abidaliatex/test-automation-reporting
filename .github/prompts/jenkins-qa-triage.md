@@ -1,4 +1,6 @@
-Analyze the latest Jenkins build and provide a concise QA triage report.
+Analyze the SPECIFIC Jenkins build provided in the Build Details section below.
+Do NOT get running builds.
+Do NOT use any other build number.
 
 Rules:
 - Before doing anything, read and follow all instructions in .github/copilot-instructions.md
