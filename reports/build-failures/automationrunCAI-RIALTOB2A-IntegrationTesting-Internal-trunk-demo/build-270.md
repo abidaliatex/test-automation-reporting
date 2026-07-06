@@ -21,8 +21,8 @@ Pass Rate: 78.6%
 - MediaHouse retrieval checks
 
 **Affected Scenarios:**
-- `tc_getMHTC03` — verify that order arrived in MH from rilato - placement
-- `tc_getMHTC03a` — verify that order arrived in MH from rilato - placement - after change
+- `tc_getMHTC03` — verify that order arrived in MH from rialto - placement
+- `tc_getMHTC03a` — verify that order arrived in MH from rialto - placement - after change
 
 **Failure Pattern:**
 MediaHouse GET validations fail after placement change because discount and pricing totals in the response differ from expected CSV fixture values.
@@ -58,8 +58,8 @@ Rialto GET validation after placement update returns different status/depth/comm
 
 ## Failing Tests / Steps
 
-- `tc_getMHTC03` — verify that order arrived in MH from rilato - placement
-- `tc_getMHTC03a` — verify that order arrived in MH from rilato - placement - after change
+- `tc_getMHTC03` — verify that order arrived in MH from rialto - placement
+- `tc_getMHTC03a` — verify that order arrived in MH from rialto - placement - after change
 - `tc_getIntegrationRialto05b` — get order in rialto using prisa id- check if placement updated
 
 ## Error Output
