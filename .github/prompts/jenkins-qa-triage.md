@@ -34,7 +34,7 @@ Pass Rate:
 
 For each root cause, show:
 
-### <Root Cause Name>
+## Root Cause Name
 
 **Affected Features:**
 - Feature1.feature
