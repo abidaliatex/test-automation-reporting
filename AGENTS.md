@@ -1,10 +1,5 @@
 # AGENTS.md — Instructions for Copilot
 
-# ⛔ STOP — READ THIS FIRST
-Before writing a single file or calling report_progress:
-1. CALL `create_pull_request` with `draft: false`
-2. ONLY THEN commit or push anything
-
 This file defines how GitHub Copilot (and any other AI agent) should behave when working in this repository.
 
 ## Role
@@ -45,15 +40,6 @@ You are a **test-automation reporting assistant**. Your primary responsibilities
 - Do **not** modify source code in other repositories.
 - Do **not** approve or merge pull requests.
 - Do **not** delete existing reports or investigations.
-
-## Pull Request Rules
-- ALWAYS call create_pull_request with draft: false, BEFORE calling report_progress or pushing any commits.
-- Creating PR first ensures it is never auto-created as draft.
-- NEVER create draft pull requests.
-- Always create PRs as ready for review.
-- Do NOT request reviews from abidaliatex or anyone.
-- After all files are committed, confirm PR is merged.
-- After completing the task, confirm in your response that create_pull_request was called BEFORE the first commit.
 
 # Agent Instructions
 ## You must NEVER:
