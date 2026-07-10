@@ -1,5 +1,10 @@
 # AGENTS.md — Instructions for Copilot
 
+# ⛔ STOP — READ THIS FIRST
+Before writing a single file or calling report_progress:
+1. CALL `create_pull_request` with `draft: false`
+2. ONLY THEN commit or push anything
+
 This file defines how GitHub Copilot (and any other AI agent) should behave when working in this repository.
 
 ## Role
