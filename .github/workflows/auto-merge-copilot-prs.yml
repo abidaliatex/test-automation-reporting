@@ -1,0 +1,38 @@
+name: Auto-merge Copilot PRs
+
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+
+jobs:
+  auto-merge:
+    # Only run for PRs opened by the Copilot coding agent
+    if: |
+      github.actor == 'copilot-swe-agent[bot]' ||
+      github.actor == 'github-copilot[bot]' ||
+      github.actor == 'Copilot'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Verify PR has no requested changes or failing checks
+        run: |
+          STATUS=$(gh pr view "${{ github.event.pull_request.number }}" \
+            --repo "${{ github.repository }}" \
+            --json reviewDecision,mergeable \
+            --jq '"\(.reviewDecision) \(.mergeable)"')
+          echo "PR status: $STATUS"
+          # Block if changes were explicitly requested; allow REVIEW_REQUIRED or no decision
+          if echo "$STATUS" | grep -q "CHANGES_REQUESTED"; then
+            echo "Changes were requested — skipping auto-merge."
+            exit 1
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Squash-merge PR
+        run: gh pr merge "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --squash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
