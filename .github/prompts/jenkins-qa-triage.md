@@ -1,5 +1,3 @@
-⚠️ FIRST ACTION — before any tool call including report_progress:
-Call runtime-tools-create_pull_request with draft: false.
 
 Analyze the SPECIFIC Jenkins build provided in the "Build Details" section at the TOP of this prompt.
 ## ⚠️ CRITICAL — Do This First:
