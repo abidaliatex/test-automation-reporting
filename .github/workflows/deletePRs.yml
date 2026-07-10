@@ -1,0 +1,17 @@
+name: Close all open PRs
+
+on:
+  workflow_dispatch:  # Run manually with a button click
+
+jobs:
+  close-prs:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Close all open PRs
+        run: |
+          gh pr list --repo ${{ github.repository }} --state open --json number -q '.[].number' \
+            | xargs -I {} gh pr close {} --repo ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
