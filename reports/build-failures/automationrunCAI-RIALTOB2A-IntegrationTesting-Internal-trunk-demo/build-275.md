@@ -20,8 +20,8 @@ Pass Rate: 78.6%
 - `rialtoB2A(CASS)TestCase4.feature`
 
 **Affected Scenarios:**
-- verify that order arrived in MH from rilato - placement (`tc_getMHTC03`)
-- verify that order arrived in MH from rilato - placement - after change (`tc_getMHTC03a`)
+- verify that order arrived in MH from rialto - placement (`tc_getMHTC03`)
+- verify that order arrived in MH from rialto - placement - after change (`tc_getMHTC03a`)
 
 **Failure Pattern:**
 MediaHouse GET validations returned different `discountType`, commission, VAT, and total values than the expected CSV fixtures after placement creation/change.
@@ -42,7 +42,7 @@ MediaHouse GET validations returned different `discountType`, commission, VAT, a
 - `rialtoB2A(CASS)TestCase4.feature`
 
 **Affected Scenarios:**
-- get order in rialto using prisa id- check if placement updated (`tc_getIntegrationRialto05b`)
+- get order in rialto using prisa id - check if placement updated (`tc_getIntegrationRialto05b`)
 
 **Failure Pattern:**
 Rialto GET validation after the placement update returned different `statusFlags`, `depth`, commission, and net pricing values than expected.
@@ -57,6 +57,6 @@ Rialto GET validation after the placement update returned different `statusFlags
 
 ## Failing Tests / Steps
 
-- `tc_getMHTC03` — verify that order arrived in MH from rilato - placement
-- `tc_getMHTC03a` — verify that order arrived in MH from rilato - placement - after change
-- `tc_getIntegrationRialto05b` — get order in rialto using prisa id- check if placement updated
+- `tc_getMHTC03` — verify that order arrived in MH from rialto - placement
+- `tc_getMHTC03a` — verify that order arrived in MH from rialto - placement - after change
+- `tc_getIntegrationRialto05b` — get order in rialto using prisa id - check if placement updated
