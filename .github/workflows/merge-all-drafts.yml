@@ -1,0 +1,57 @@
+name: Merge All Draft PRs
+
+on:
+  workflow_dispatch:  # manual trigger from Actions tab
+
+jobs:
+  merge-all-drafts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Find and merge all open draft PRs
+        run: |
+          echo "🔍 Looking for open draft PRs..."
+
+          # Get ALL open draft PRs
+          PRS=$(gh pr list \
+            --repo "${{ github.repository }}" \
+            --state open \
+            --json number,isDraft,title \
+            --jq '[.[] | select(.isDraft == true)] | .[].number')
+
+          if [ -z "$PRS" ]; then
+            echo "✅ No open draft PRs found."
+            exit 0
+          fi
+
+          for PR in $PRS; do
+            echo "⚙️  Processing PR #$PR..."
+
+            # Convert draft to ready
+            echo "Converting PR #$PR from draft to ready..."
+            gh pr ready "$PR" --repo "${{ github.repository }}"
+
+            # Check for requested changes
+            STATUS=$(gh pr view "$PR" \
+              --repo "${{ github.repository }}" \
+              --json reviewDecision \
+              --jq '.reviewDecision')
+
+            if [ "$STATUS" == "CHANGES_REQUESTED" ]; then
+              echo "⏭️  PR #$PR has changes requested — skipping."
+              continue
+            fi
+
+            # Merge the PR
+            echo "Merging PR #$PR..."
+            gh pr merge "$PR" \
+              --repo "${{ github.repository }}" \
+              --squash
+
+            echo "🎉 PR #$PR merged successfully!"
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
