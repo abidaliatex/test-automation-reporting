@@ -1,8 +1,7 @@
 name: Auto-merge Copilot PRs Manuall
 
 on:
-  pull_request_target:
-    #types: [opened, ready_for_review]
+  workflow_dispatch:
 
 jobs:
   auto-merge:
