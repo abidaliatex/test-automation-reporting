@@ -14,7 +14,7 @@ Pass Rate: 41.2%
 
 ## Root Cause Groups
 
-## CASS API endpoints under `/api/870/v1/cass` returning 404
+### CASS API endpoint 404 errors
 
 **Affected Features:**
 - `rialtoB2A(CASS).feature`
@@ -29,11 +29,11 @@ Pass Rate: 41.2%
 - Returns OrderHeader objects for orders associated with the user. (`tc_getRialtoB2A04`)
 
 **Failure Pattern:**
-Expected HTTP success codes (`N200`/`N202`) but received `N404` from Tomcat for CASS endpoints.
+Expected HTTP success codes (`200`/`202`) but received `404` from Tomcat for CASS endpoints.
 
 **Evidence:**
-- `expected [N200] but found [N404]`
-- `expected [N202] but found [N404]`
+- `expected [200] but found [404]`
+- `expected [202] but found [404]`
 - `/agency/crossad-integration-ws/api/870/v1/cass/users/login`
 - `/agency/crossad-integration-ws/api/870/v1/cass/orders/orders`
 
@@ -41,7 +41,7 @@ Expected HTTP success codes (`N200`/`N202`) but received `N404` from Tomcat for 
 
 **Confidence:** High
 
-## Dependent flow failures from missing UUID / invalid response parsing
+### Dependent flow failures from missing UUID / invalid response parsing
 
 **Affected Features:**
 - `rialtoB2A(CASS).feature`
