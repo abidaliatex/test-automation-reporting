@@ -3,6 +3,7 @@ name: Auto-merge Copilot PRs
 on:
   schedule:
     - cron: '*/5 * * * *'  # runs every 5 minutes
+  workflow_dispatch:        # manual trigger from Actions tab
 
 jobs:
   auto-merge:
@@ -12,35 +13,30 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Find and merge open Copilot draft PRs
+      - name: Find and merge all open draft PRs
         run: |
-          # Get all open PRs by Copilot bot
+          echo "🔍 Looking for open draft PRs..."
+
+          # Get ALL open draft PRs (no author filter — avoids login mismatch)
           PRS=$(gh pr list \
             --repo "${{ github.repository }}" \
-            --json number,isDraft,author \
-            --jq '[.[] | select(
-              .author.login == "copilot-swe-agent[bot]" or
-              .author.login == "github-copilot[bot]" or
-              .author.login == "Copilot"
-            )] | .[].number')
+            --state open \
+            --json number,isDraft \
+            --jq '[.[] | select(.isDraft == true)] | .[].number')
 
           if [ -z "$PRS" ]; then
-            echo "No Copilot PRs found."
+            echo "✅ No open draft PRs found."
             exit 0
           fi
 
+          echo "Found draft PRs: $PRS"
+
           for PR in $PRS; do
-            echo "Processing PR #$PR..."
+            echo "⚙️  Processing PR #$PR..."
 
-            # Convert draft to ready if needed
-            IS_DRAFT=$(gh pr view "$PR" \
-              --repo "${{ github.repository }}" \
-              --json isDraft --jq '.isDraft')
-
-            if [ "$IS_DRAFT" == "true" ]; then
-              echo "Converting PR #$PR from draft to ready..."
-              gh pr ready "$PR" --repo "${{ github.repository }}"
-            fi
+            # Convert draft to ready
+            echo "Converting PR #$PR from draft to ready..."
+            gh pr ready "$PR" --repo "${{ github.repository }}"
 
             # Check for requested changes
             STATUS=$(gh pr view "$PR" \
@@ -49,15 +45,17 @@ jobs:
               --jq '.reviewDecision')
 
             if [ "$STATUS" == "CHANGES_REQUESTED" ]; then
-              echo "PR #$PR has changes requested — skipping."
+              echo "⏭️  PR #$PR has changes requested — skipping."
               continue
             fi
 
             # Merge the PR
-            echo "Merging PR #$PR..."
+            echo "✅ Merging PR #$PR..."
             gh pr merge "$PR" \
               --repo "${{ github.repository }}" \
               --squash
+
+            echo "🎉 PR #$PR merged!"
           done
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
