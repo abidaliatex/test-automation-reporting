@@ -1,4 +1,4 @@
-name: Auto-merge Copilot PRs
+name: Auto-merge Copilot PRs schedule
 
 on:
   schedule:
