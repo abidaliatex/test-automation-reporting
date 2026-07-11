@@ -8,7 +8,6 @@ This repository tracks automated test and build failures for CI/CD pipelines. Al
 - **Do** create a new file in `reports/build-failures/{job-name}/build-<build-id>.md` using data retrieved from Jenkins MCP.
 - **Do not** edit existing files in `reports/build-failures/{job-name}/` each build gets its own new file.
 - **Do** create NEW files in `investigations/copilot-findings/{job-name}/` for each unique build number — never edit existing ones.
-- **Do** create or update files in `dashboards/` based on the latest reports.
 
 ## ⚠️ CRITICAL — Investigation File Rules
 - Each build number gets its OWN NEW investigation file
@@ -32,14 +31,6 @@ When asked to analyse a build failure:
 4. Extract the failing test names, error messages, and stack traces.
 5. Correlate failures with recent commits or dependency changes if available.
 6. CREATE new file `investigations/copilot-findings/{job-name}/build-<id>-analysis.md` using format in `AGENTS.md`.
-
-## Generating the Weekly Summary
-When asked to produce the weekly summary:
-
-1. Read all reports in `reports/build-failures/` created or modified in the last 7 days.
-2. Group failures by test suite and count occurrences.
-3. Compare with the previous week's counts to compute trends.
-4. Overwrite `dashboards/weekly-summary.md` with the updated table.
 
 ## Security & Privacy
 - Do not include secrets, tokens, or credentials in any report or analysis.
