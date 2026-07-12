@@ -31,6 +31,54 @@ When asked to produce the weekly summary:
 3. Compare with the previous week's counts to compute trends.
 4. Overwrite `dashboards/weekly-summary.md` with the updated table.
 
+## Root Cause Groups Summary
+After scanning all build reports, extract and group root causes across all jobs:
+
+1. Collect all `## Root Cause Groups` sections from every build report in `reports/build-failures/`.
+2. Merge identical or similar root causes across different jobs and builds into one group.
+3. For each group output the following format:
+
+### {number}. {Root Cause Name}
+| Field | Detail |
+|-------|--------|
+| Affected Jobs | job name(s) |
+| Total Failures | count across all builds this week |
+| First Seen | earliest build date |
+| Still Active | Yes / No (based on latest build) |
+| Confidence | High / Medium / Low |
+
+**Affected Feature Files & Scenarios:**
+- `{feature file name}`
+  - `{scenario id}` — {scenario description}
+  - `{scenario id}` — {scenario description}
+
+4. Repeat for every distinct root cause found this week.
+5. Output all groups under `## Root Cause Groups` in `dashboards/weekly-summary.md`.
+
+
+## Root Cause Groups Summary 2
+
+After scanning all build reports, extract and group root causes across all jobs:
+
+1. Collect all `## Root Cause Groups` sections from every build report in `reports/build-failures/`.
+2. Merge identical or similar root causes across different jobs and builds into one group.
+3. For each group produce:
+   - **Root Cause** — short name (e.g. "CASS 404 after v88 upgrade")
+   - **Affected Jobs** — list of job names
+   - **Total Failures** — count across all builds this week
+   - **First Seen** — earliest build date
+   - **Still Active** — yes/no (is it in the latest build?)
+   - **Confidence** — High / Medium / Low
+4. Output as a table under `## Root Cause Groups` section in `dashboards/weekly-summary.md`.
+
+### Output Format
+
+| Root Cause | Affected Jobs | Total Failures | First Seen | Still Active | Confidence |
+|------------|--------------|----------------|------------|--------------|------------|
+| CASS 404 after v88 upgrade | automationrunCAI-RIALTO-B2A-trunk | 70 | 2026-07-05 | Yes | High |
+| discountType not propagated | demo, internal-trunk | 18 | 2026-07-05 | Yes | High |
+
+
 ## Conventions
 
 ### Report Format
