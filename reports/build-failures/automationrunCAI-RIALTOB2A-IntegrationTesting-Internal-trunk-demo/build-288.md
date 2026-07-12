@@ -4,12 +4,12 @@
 
 ## Build Summary
 
-Build: `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo` #288  
-Date: 2026-07-12 21:10:06 UTC  
-Status: `UNSTABLE`  
-Total Tests: 14  
-Passed: 11  
-Failed: 3  
+Build: `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo` #288
+Date: 2026-07-12 21:10:06 UTC
+Status: `UNSTABLE`
+Total Tests: 14
+Passed: 11
+Failed: 3
 Pass Rate: 78.6%
 
 ---
