@@ -22,8 +22,8 @@ Pass Rate: 78.6%
 - `rialtoB2A(CASS)TestCase4.feature`
 
 **Affected Scenarios:**
-- verify that order arrived in MH from rilato - placement (`tc_getMHTC03`)
-- verify that order arrived in MH from rilato - placement - after change (`tc_getMHTC03a`)
+- verify that order arrived in MH from rialto - placement (`tc_getMHTC03`)
+- verify that order arrived in MH from rialto - placement - after change (`tc_getMHTC03a`)
 
 **Failure Pattern:**
 `orders[0].printDetails.discountType` and related MediaHouse basket totals/commission/VAT values do not match the expected assertions.
