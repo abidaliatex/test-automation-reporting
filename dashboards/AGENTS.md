@@ -23,14 +23,6 @@ Do NOT run automatically during build triage tasks.
 ## Behaviour Guidelines
 - **Do** create or update files in `dashboards/` based on the latest reports.
 
-## Generating the Weekly Summary
-When asked to produce the weekly summary:
-
-1. Read all reports in `reports/build-failures/` created or modified in the last 7 days.
-2. Group failures by test suite and count occurrences.
-3. Compare with the previous week's counts to compute trends.
-4. Overwrite `dashboards/weekly-summary.md` with the updated table.
-
 ## Root Cause Groups Summary
 After scanning all build reports, extract and group root causes across all jobs:
 
