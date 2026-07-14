@@ -6,51 +6,6 @@
 
 ---
 
-## Failed Builds
-
-### `automationrunCAI-RIALTO-B2A-trunk`
-
-| Build | Date | Tests (fail/total) | Root Cause Summary | Investigation |
-|---|---|---|---|---|
-| [#286](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-286.md) | 2026-07-09 | 10 / 17 | Same CASS 404 pattern — third consecutive failure | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-286-analysis.md) |
-| [#295](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-295.md) | 2026-07-10 | 10 / 17 | Persistent CASS route unavailability; no change in failure pattern | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-295-analysis.md) |
-| [#298](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-298.md) | 2026-07-10 | 10 / 17 | Persistent CASS route unavailability | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-298-analysis.md) |
-| [#300](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-300.md) | 2026-07-10 | 10 / 17 | Persistent CASS route unavailability | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-300-analysis.md) |
-| [#301](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-301.md) | 2026-07-10 | 10 / 17 | Persistent CASS route unavailability — 7th consecutive UNSTABLE build | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-301-analysis.md) |
-| [#302](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-302.md) | 2026-07-11 | 10 / 17 | Same CASS 404 — 8th consecutive UNSTABLE build | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-302-analysis.md) |
-| [#303](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-303.md) | 2026-07-11 | 10 / 17 | Same CASS 404 — 9th consecutive UNSTABLE build | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-303-analysis.md) |
-| [#304](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-304.md) | 2026-07-11 | 10 / 17 | Same CASS 404 — 10th consecutive UNSTABLE build | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-304-analysis.md) |
-| [#305](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-305.md) | 2026-07-11 | 10 / 17 | Same CASS 404 — 11th consecutive UNSTABLE build | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-305-analysis.md) |
-| [#306](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-306.md) | 2026-07-11 | 10 / 17 | Same CASS 404 — 12th consecutive UNSTABLE build | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-306-analysis.md) |
-| [#307](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-307.md) | 2026-07-12 | 10 / 17 | Same CASS 404 — 13th consecutive UNSTABLE build | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-307-analysis.md) |
-| [#308](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-308.md) | 2026-07-12 | 10 / 17 | Same CASS 404 — 14th consecutive UNSTABLE build | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-308-analysis.md) |
-| [#309](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-309.md) | 2026-07-13 | 10 / 17 | Same CASS 404 — 15th consecutive UNSTABLE build | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-309-analysis.md) |
-| [#310](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-310.md) | 2026-07-13 | 10 / 17 | Same CASS 404 — 16th consecutive UNSTABLE build | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-310-analysis.md) |
-
-### `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk`
-
-| Build | Date | Tests (fail/total) | Root Cause Summary | Investigation |
-|---|---|---|---|---|
-| [#134](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-134.md) | 2026-07-10 | 86 / 513 | MH discountType/pricing drift, Rialto state-update drift, multi-product indexing, malformed follow-up requests | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-134-analysis.md) |
-| [#135](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-135.md) | 2026-07-11 | 86 / 513 | Same root causes as #134 — all 6 failure groups persist; no regressions resolved | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-135-analysis.md) |
-| [#137](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-137.md) | 2026-07-12 | 89 / 513 | Same 6 groups + TC1 basket-not-found (transient, +3 failures) | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-137-analysis.md) |
-| [#138](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-138.md) | 2026-07-13 | 86 / 513 | TC1 basket-not-found resolved; all 6 chronic failure groups persist unchanged | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-138-analysis.md) |
-
-### `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo`
-
-| Build | Date | Tests (fail/total) | Root Cause Summary | Investigation |
-|---|---|---|---|---|
-| [#271](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-271.md) | 2026-07-09 | 3 / 14 | Same + Rialto `placementId` now returning `TEXT` instead of `SIDAN3`; service response continuing to diverge | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-271-analysis.md) |
-| [#283](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-283.md) | 2026-07-10 | 3 / 14 | MH `discountType` not propagated; Rialto order state (statusFlags, commission, depth) not updated after placement change | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-283-analysis.md) |
-| [#284](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-284.md) | 2026-07-10 | 3 / 14 | Same — `depth` (372 vs 184), `statusFlags` empty, `commissionAmount` drifted to 620.0 | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-284-analysis.md) |
-| [#285](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-285.md) | 2026-07-11 | 3 / 14 | MH `discountType` null, pricing drift; Rialto depth 372 vs 184, `statusFlags` empty | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-285-analysis.md) |
-| [#286](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-286.md) | 2026-07-11 | 3 / 14 | Same fixture drift; depth/commission/`statusFlags` mismatch continues | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-286-analysis.md) |
-| [#287](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-287.md) | 2026-07-11 | 3 / 14 | Same — MH `discountType` null, VAT/sum drift; Rialto depth 372 vs 184 | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-287-analysis.md) |
-| [#288](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-288.md) | 2026-07-12 | 3 / 14 | MH `discountType` null, VAT/sum drift; Rialto depth 372 vs 184, `statusFlags` empty | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-288-analysis.md) |
-| [#289](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-289.md) | 2026-07-13 | 3 / 14 | Same — `discountType` null, depth 372 vs 184, `statusFlags` empty, `commissionAmount` 620.0 | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-289-analysis.md) |
-
----
-
 ## Root Cause Groups
 
 ### 1. CASS 404 after v88 upgrade
