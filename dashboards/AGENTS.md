@@ -70,6 +70,16 @@ After scanning all build reports, extract and group root causes across all jobs:
 | CASS 404 after v88 upgrade | automationrunCAI-RIALTO-B2A-trunk | 70 | 2026-07-05 | Yes | High |
 | discountType not propagated | demo, internal-trunk | 18 | 2026-07-05 | Yes | High |
 
+---
+After generating dashboards/weekly-summary.md,
+convert it to dashboards/weekly-summary.html
+
+- Keep all sections and content identical
+- Apply clean HTML styling
+- Use the same CSS classes for success/failure/confidence colours
+- Make tables responsive
+---
+
 
 ## Conventions
 
