@@ -6,21 +6,6 @@
 
 ---
 
-## Failure Counts by Test Pattern
-
-| Test Pattern | Failing tests this week | Failing tests last week | Trend |
-|---|---|---|---|
-| CASS B2A API (`tc_postRialtoB2A*`, `tc_getRialtoB2A*`, `tc_patchRialtoB2A*`) | 10 | 10 | → |
-| MH discountType / pricing assertions | 40 | 40 | → |
-| Rialto placement / integration assertions | 23 | 23 | → |
-| MH multi-product indexing (TC16–TC20) | 15 | 15 | → |
-| Request construction / malformed parameters | 6 | 6 | → |
-| Residual pricing / identity mismatches | 8 | 8 | → |
-
-> **Note:** Counts reflect unique failing test steps. The CASS API group (10 tests) recurred across all 14 `automationrunCAI-RIALTO-B2A-trunk` builds this period — builds #307–#310 (2026-07-12 to 07-13) confirmed the CASS 404 pattern remains unresolved; the streak has now reached 16 consecutive UNSTABLE builds. The multi-product indexing count held at 15 (stable from last week). Internal-trunk produced 4 builds (#134, #135, #137, #138): builds #137 and #138 saw a transient TC1 basket-not-found issue (present in #137, resolved in #138). MH and Rialto counts include failures from the demo job (3 tests × 8 builds, #271–#289) and the internal-trunk job (86–89 failures per build).
-
----
-
 ## Failed Builds
 
 ### `automationrunCAI-RIALTO-B2A-trunk`
