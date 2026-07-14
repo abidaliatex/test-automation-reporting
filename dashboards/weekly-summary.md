@@ -2,7 +2,7 @@
 
 **Period:** 2026-07-07 → 2026-07-14  
 **Generated:** 2026-07-14  
-**Observed builds:** 34 | **Failed/Unstable builds:** 34 | **Jobs affected:** 3
+**Observed builds:** 33 | **Failed/Unstable builds:** 33 | **Jobs affected:** 3
 
 ---
 
@@ -13,7 +13,7 @@
 | Field | Detail |
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTO-B2A-trunk` |
-| Total Failures | 200 (10 per build × 20 builds) |
+| Total Failures | 160 (10 per build × 16 builds) |
 | First Seen | 2026-07-05 |
 | Still Active | Yes |
 | Confidence | High |
@@ -36,7 +36,7 @@
 | Field | Detail |
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk`, `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo` |
-| Total Failures | ~198 (internal-trunk: ~31 × 6 builds; demo: 2 × 10 builds) |
+| Total Failures | ~208 (internal-trunk: ~31 × 6 builds; demo: 2 × 11 builds) |
 | First Seen | 2026-07-05 |
 | Still Active | Yes |
 | Confidence | High |
@@ -53,7 +53,7 @@
 | Field | Detail |
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo`, `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
-| Total Failures | ~38 (demo: 1 × 10 builds; internal-trunk: ~5 × 6 builds) |
+| Total Failures | ~35 (demo: 1 × 11 builds; internal-trunk: ~4 × 6 builds) |
 | First Seen | 2026-07-05 |
 | Still Active | Yes |
 | Confidence | High |
@@ -70,7 +70,7 @@
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
 | Total Failures | 90 (15 per build × 6 builds) |
-| First Seen | 2026-07-10 |
+| First Seen | 2026-07-09 |
 | Still Active | Yes |
 | Confidence | High |
 
@@ -85,7 +85,7 @@
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
 | Total Failures | ~36 (6 per build × 6 builds) |
-| First Seen | 2026-07-10 |
+| First Seen | 2026-07-09 |
 | Still Active | Yes |
 | Confidence | Medium |
 
@@ -100,8 +100,8 @@
 | Field | Detail |
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
-| Total Failures | ~60 (9–12 per build × 6 builds; TC1 basket-not-found transient in #137 only) |
-| First Seen | 2026-07-10 |
+| Total Failures | ~60 (9–12 per build × 6 builds; TC1 pricing defect in builds #136 and #137) |
+| First Seen | 2026-07-09 |
 | Still Active | Yes |
 | Confidence | High |
 
@@ -117,7 +117,7 @@
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
 | Total Failures | ~126 (21 per build × 6 builds) |
-| First Seen | 2026-07-10 |
+| First Seen | 2026-07-09 |
 | Still Active | Yes |
 | Confidence | Medium |
 
@@ -131,10 +131,10 @@
 
 ## Key Observations
 
-- **CASS 404 streak reaches 20 consecutive builds with no remediation.** The v88 API route issue first seen on 2026-07-05 (#284) continued uninterrupted through builds #307–#310 this period. The failure pattern is identical across all 20 builds: 7 direct 404 failures + 3 cascade failures = 10 per build. No fix has been deployed to environment `870`.
-- **Internal-trunk ran 6 builds this period; all UNSTABLE.** Build #137 (07-12) added a transient TC1 basket-not-found defect (+3 failures, 89 total); build #138 (07-13) resolved TC1 returning to 86 failures — identical to builds #134 and #135. No other failure groups improved.
-- **Demo job failures stable at 3/14 per build across 10 consecutive runs.** All ten demo builds (#271–#289, 07-09 to 07-13) failed with the same 3 tests: `tc_getMHTC03`, `tc_getMHTC03a`, and `tc_getIntegrationRialto05b`. Failure values (`depth=372`, `commissionAmount=620.0`, `statusFlags=[]`) are consistent across every run.
-- **Zero passing builds across all three jobs this week.** All 34 observed builds were UNSTABLE.
+- **CASS 404 streak reaches 16 consecutive builds with no remediation.** The v88 API route issue first seen on 2026-07-05 (#284) continued uninterrupted through builds #307–#310 this period. The failure pattern is identical across all 16 builds: 7 direct 404 failures + 3 cascade failures = 10 per build. No fix has been deployed to environment `870`.
+- **Internal-trunk ran 6 builds this period (builds #133–#138); all UNSTABLE.** Builds #136 (07-11) and #137 (07-12) each logged 89 failures — 3 more than the baseline of 86 — due to additional TC1 pricing discrepancies. Build #138 (07-13) returned to 86 failures. No other failure groups improved.
+- **Demo job failures stable at 3/14 per build across all 11 runs.** All 11 demo builds (#262–#289, 07-05 to 07-13) failed with the same 3 tests: `tc_getMHTC03`, `tc_getMHTC03a`, and `tc_getIntegrationRialto05b`. Failure values (`depth=372`, `commissionAmount=620.0`, `statusFlags=[]`) are consistent across every run.
+- **Zero passing builds across all three jobs this week.** All 33 observed builds were UNSTABLE.
 - **No improvement in any failure group compared to last week.** All patterns are unchanged; no fixes have been deployed.
 
 ## Recommended Actions
@@ -159,6 +159,7 @@
 | [automationrunCAI-RIALTO-B2A-trunk #307](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-307.md) | 2026-07-12 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-307-analysis.md) |
 | [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #137](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-137.md) | 2026-07-12 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-137-analysis.md) |
 | [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #288](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-288.md) | 2026-07-12 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-288-analysis.md) |
+| automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #136 | 2026-07-11 | UNSTABLE | *(no individual report)* |
 | [automationrunCAI-RIALTO-B2A-trunk #306](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-306.md) | 2026-07-11 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-306-analysis.md) |
 | [automationrunCAI-RIALTO-B2A-trunk #305](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-305.md) | 2026-07-11 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-305-analysis.md) |
 | [automationrunCAI-RIALTO-B2A-trunk #304](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-304.md) | 2026-07-11 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-304-analysis.md) |
@@ -175,6 +176,7 @@
 | [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #134](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-134.md) | 2026-07-10 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-134-analysis.md) |
 | [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #284](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-284.md) | 2026-07-10 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-284-analysis.md) |
 | [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #283](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-283.md) | 2026-07-10 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-283-analysis.md) |
+| automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #133 | 2026-07-09 | UNSTABLE | *(no individual report)* |
 | [automationrunCAI-RIALTO-B2A-trunk #286](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-286.md) | 2026-07-09 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTO-B2A-trunk/build-286-analysis.md) |
 | [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #271](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-271.md) | 2026-07-09 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-271-analysis.md) |
 | [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo #270](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-270.md) | 2026-07-06 | UNSTABLE | [analysis](../investigations/copilot-findings/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo/build-270-analysis.md) |
