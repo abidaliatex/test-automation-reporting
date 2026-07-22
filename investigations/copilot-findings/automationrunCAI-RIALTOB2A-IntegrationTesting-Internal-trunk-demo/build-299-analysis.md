@@ -26,7 +26,7 @@
 ## Affected Components
 
 - Feature flow: `rialtoB2A(CASS)TestCase29.feature`
-- Rialto GET step using `User perfrom "get" request with keys ...`
+- Rialto GET step using `User perform "get" request with keys ...`
 - `ApiStepDefinition.user_verify_the_prisa_id_matches_with_the_prisa_id_from_agency` (`ApiStepDefinition.java:1488`)
 - Shared TestContext values: `agencyPrisaId`, `MH odIds`
 
