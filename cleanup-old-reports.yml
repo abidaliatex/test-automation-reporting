@@ -1,0 +1,60 @@
+name: Cleanup Old Build Failure Reports
+
+on:
+  schedule:
+    - cron: '0 23 * * 4'   # Every Thursday at 11:00 PM
+  workflow_dispatch:         # Allow manual trigger for testing
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Keep only last 12 builds per job folder
+        run: |
+          BASE_DIR="reports/build-failures"
+          DELETED=0
+
+          for job_dir in "$BASE_DIR"/*/; do
+            [ -d "$job_dir" ] || continue
+
+            # Get all build-NNN.md files, sort by build number ascending
+            mapfile -t BUILDS < <(
+              ls "$job_dir"build-*.md 2>/dev/null \
+              | sed 's|.*build-\([0-9]*\)\.md|\1 &|' \
+              | sort -n \
+              | awk '{print $2}'
+            )
+
+            TOTAL=${#BUILDS[@]}
+
+            if [ "$TOTAL" -le 12 ]; then
+              echo "[$job_dir] Only $TOTAL builds — nothing to delete."
+              continue
+            fi
+
+            DELETE_COUNT=$((TOTAL - 12))
+            echo "[$job_dir] Found $TOTAL builds — deleting $DELETE_COUNT oldest."
+
+            for (( i=0; i<DELETE_COUNT; i++ )); do
+              echo "  Deleting: ${BUILDS[$i]}"
+              git rm "${BUILDS[$i]}"
+              DELETED=$((DELETED + 1))
+            done
+          done
+
+          echo "Total deleted: $DELETED files"
+
+          if [ "$DELETED" -gt 0 ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore: keep only last 12 builds per job folder"
+            git push
+          else
+            echo "No builds to delete."
+          fi
