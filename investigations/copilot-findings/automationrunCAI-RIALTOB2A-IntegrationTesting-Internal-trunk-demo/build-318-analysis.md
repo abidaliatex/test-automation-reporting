@@ -26,7 +26,7 @@ Pass Rate: 86.7%
 
 ## Root Cause Groups
 
-## Missing `discountType` in MediaHouse original-state order
+### Missing `discountType` in MediaHouse original-state order
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase29.feature`
@@ -45,7 +45,7 @@ Pass Rate: 86.7%
 
 **Confidence:** High
 
-## Reverted full-page values are not restored in Rialto
+### Reverted full-page values are not restored in Rialto
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase29.feature`
