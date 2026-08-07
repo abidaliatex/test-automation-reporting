@@ -63,7 +63,7 @@ The StoreStatus check for an updated order returns `N202` instead of the expecte
 ## Summary
 
 - Build 360 matches the same three persistent failures already marked as failing since build 231.
-- Jenkins checked out commit `3152fee94ae332b1cf9181d2c7844cfcb85a134c` (`udpated date for testcase23`), but the failing patterns appear long-running rather than newly introduced in this build.
+- Jenkins checked out commit `3152fee94ae332b1cf9181d2c7844cfcb85a134c` with a testcase date update commit message, but the failing patterns appear long-running rather than newly introduced in this build.
 
 ## Root Cause
 
