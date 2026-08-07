@@ -18,7 +18,7 @@ Pass Rate: 82.4%
 
 ## Root Cause Groups
 
-## Pricing / Monetary Value Mismatch
+### Pricing / Monetary Value Mismatch
 
 **Affected Features:**
 - rialtoB2A(CASS).feature
@@ -38,7 +38,7 @@ Response payload values do not match expected monetary amounts in the test data 
 
 **Confidence:** High
 
-## Async Order Status Still In Progress
+### Async Order Status Still In Progress
 
 **Affected Features:**
 - rialtoB2A(CASS).feature
