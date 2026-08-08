@@ -16,7 +16,7 @@ Pass Rate: 88.9%
 
 ## Root Cause Groups
 
-## Discount / Price Calculation Mismatch
+### Discount / Price Calculation Mismatch
 
 **Affected Features:**
 - rialtoB2A(CASS TC1 and TC2)
@@ -67,7 +67,7 @@ Pass Rate: 88.9%
 
 **Confidence:** High
 
-## Order-Line Mapping / Sequencing Mismatch
+### Order-Line Mapping / Sequencing Mismatch
 
 **Affected Features:**
 - rialtoB2A(CASS TC4/5/9/15/18/19/20/22/24/35/37)
@@ -98,7 +98,7 @@ Pass Rate: 88.9%
 
 **Confidence:** Medium
 
-## Basket ID / Path Parameter Propagation Failure
+### Basket ID / Path Parameter Propagation Failure
 
 **Affected Features:**
 - rialtoB2A(CASS TC1 and TC2)
@@ -121,7 +121,7 @@ Pass Rate: 88.9%
 
 **Confidence:** High
 
-## Backend Transaction Rollback (HTTP 500)
+### Backend Transaction Rollback (HTTP 500)
 
 **Affected Features:**
 - rialtoB2A(CASS TC18)
@@ -145,7 +145,7 @@ Pass Rate: 88.9%
 
 **Confidence:** High
 
-## Order Status Propagation Mismatch
+### Order Status Propagation Mismatch
 
 **Affected Features:**
 - rialtoB2A(CASS TC27)
@@ -168,7 +168,7 @@ Pass Rate: 88.9%
 
 **Confidence:** Medium
 
-## MH Basket ID / Agency ID Mismatch
+### MH Basket ID / Agency ID Mismatch
 
 **Affected Features:**
 - rialtoB2A(CASS TC35 Magazine (change Date Size & Placement from Rialto))
