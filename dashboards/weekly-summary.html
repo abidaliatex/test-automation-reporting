@@ -33,6 +33,15 @@
 <strong>Observed builds:</strong> 18 | <strong>Failed/Unstable builds:</strong> 18 | <strong>Jobs affected:</strong> 2</p>
 <hr />
 <h2>Root Cause Groups</h2>
+<div class="table-wrapper"><table><thead><tr><th>Root Cause</th><th>Affected Jobs</th><th>Total Failures</th><th>First Seen</th><th>Still Active</th><th>Confidence</th></tr></thead><tbody>
+<tr><td>Pricing, totals, and precision mismatches</td><td><code>automationrunCAI-RIALTO-B2A-trunk</code>, <code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td><td>~223 grouped failure instances</td><td>2026-08-03</td><td><span class="active-yes">Yes</span></td><td><span class="confidence-high">High</span></td></tr>
+<tr><td>Discount-type and status propagation regression</td><td><code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td><td>~37 grouped failure instances</td><td>2026-08-03</td><td><span class="active-yes">Yes</span></td><td><span class="confidence-high">High</span></td></tr>
+<tr><td>Order-line sequencing and reverted-state drift</td><td><code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td><td>~54 grouped failure instances</td><td>2026-08-03</td><td><span class="active-yes">Yes</span></td><td><span class="confidence-medium">Medium</span></td></tr>
+<tr><td>Basket identity and path-parameter drift</td><td><code>automationrunCAI-RIALTO-B2A-trunk</code>, <code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td><td>~19 grouped failure instances</td><td>2026-08-03</td><td><span class="active-yes">Yes</span></td><td><span class="confidence-high">High</span></td></tr>
+<tr><td>Backend rollback and parsing failures</td><td><code>automationrunCAI-RIALTO-B2A-trunk</code>, <code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td><td>7 grouped failure instances</td><td>2026-08-03</td><td><span class="active-yes">Yes</span></td><td><span class="confidence-high">High</span></td></tr>
+<tr><td>StoreStatus response-code regression (<code>N200</code> vs <code>N202</code>)</td><td><code>automationrunCAI-RIALTO-B2A-trunk</code></td><td>9 failed checks</td><td>2026-08-03</td><td><span class="active-yes">Yes</span></td><td><span class="confidence-high">High</span></td></tr>
+</tbody></table></div>
+<h2>Root Cause Group Details</h2>
 <h3>1. Pricing, totals, and precision mismatches</h3>
 <div class="table-wrapper"><table><thead><tr><th>Field</th><th>Detail</th></tr></thead><tbody>
 <tr><td>Affected Jobs</td><td><code>automationrunCAI-RIALTO-B2A-trunk</code>, <code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td></tr>
@@ -45,17 +54,17 @@
 <ul>
 <li><code>rialtoB2A(CASS).feature</code>
 <ul>
-<li><code>tc_getRialtoB2A05</code> — StoreStatus payload still returns <code>276757.2</code> vs expected <code>369009.6</code> in builds <code>#352-#353</code> and <code>#365</code>.</li>
-<li><code>tc_postRialtoB2A03</code> — Self-service price calculation stays halved (<code>89392.58</code> expected vs <code>44696.29</code>).</li>
+<li><code>tc_getRialtoB2A05</code> — StoreStatus payload mismatches recurred in builds <code>#352</code>, <code>#353</code>, and <code>#365</code>.</li>
+<li><code>tc_postRialtoB2A03</code> — Self-service price calculation stayed halved (<code>89392.58</code> expected vs <code>44696.29</code>) throughout the week.</li>
 </ul></li>
 <li><code>rialtoB2A(CASS)TestCase11.feature, ...15.feature, ...21.feature, ...23.feature, ...24.feature</code>
 <ul>
-<li><code>User perform CASS GET/POST API - #1.1</code> — <code>totalInclVat</code>, <code>vat</code>, <code>netAmount</code>, <code>priceNet</code>, and <code>priceNetExComm</code> repeatedly drift from the fixtures.</li>
-<li><code>Verify MediaHouse basket state - #1.1</code> — Large <code>orderDiscount</code>, <code>netPrice</code>, and commission mismatches continue after update/revert flows.</li>
+<li><code>User perform CASS GET/POST API - #1.1</code> — <code>totalInclVat</code>, <code>vat</code>, <code>netAmount</code>, <code>priceNet</code>, and <code>priceNetExComm</code> repeatedly drifted from fixture values.</li>
+<li><code>Verify MediaHouse basket state - #1.1</code> — Large <code>orderDiscount</code>, <code>netPrice</code>, and commission mismatches continued after update/revert flows.</li>
 </ul></li>
 <li><code>rialtoB2A(CASS)TestCase26.feature, ...28.feature, ...30.feature, ...31.feature, ...32.feature, ...33.feature, ...34.feature, ...35.feature, ...36.feature, ...37.feature</code>
 <ul>
-<li><code>Magazine verification steps</code> — Magazine scenarios keep returning unexpected <code>orderDiscount</code>, <code>sumDiscount</code>, <code>commission</code>, and basket totals.</li>
+<li><code>Magazine verification steps</code> — Magazine scenarios kept returning unexpected <code>orderDiscount</code>, <code>sumDiscount</code>, <code>commission</code>, and basket totals.</li>
 </ul></li>
 </ul>
 <h3>2. Discount-type and status propagation regression</h3>
@@ -70,12 +79,12 @@
 <ul>
 <li><code>rialtoB2A(CASS)TestCase1-2.feature, ...3.feature, ...4.feature, ...6.feature</code>
 <ul>
-<li><code>User perform CASS POST API - #1.1</code> — <code>orderHeader.statusFlags</code> keeps returning <code>[]</code> instead of <code>[PRELIMINARY]</code> in TC1/3/4/6.</li>
+<li><code>User perform CASS POST API - #1.1</code> — <code>orderHeader.statusFlags</code> kept returning <code>[]</code> instead of <code>[PRELIMINARY]</code> in TC1/3/4/6.</li>
 </ul></li>
 <li><code>rialtoB2A(CASS)TestCase4.feature, ...9.feature, ...11.feature, ...15.feature, ...27.feature, ...37.feature</code>
 <ul>
-<li><code>User perform CASS GET API - #1.1</code> — <code>discountType</code> flips between <code>RIALTO</code>, <code>NONE</code>, and <code>null</code>, which then corrupts downstream pricing assertions.</li>
-<li><code>MEDIAHOUSE / RIALTO verification steps</code> — Latest failures still show propagated discount-state errors in TC27 and TC37.</li>
+<li><code>User perform CASS GET API - #1.1</code> — <code>discountType</code> flipped between <code>RIALTO</code>, <code>NONE</code>, and <code>null</code>, which then corrupted downstream pricing assertions.</li>
+<li><code>MEDIAHOUSE / RIALTO verification steps</code> — Latest failures still showed propagated discount-state errors in TC27 and TC37.</li>
 </ul></li>
 </ul>
 <h3>3. Order-line sequencing and reverted-state drift</h3>
@@ -90,15 +99,15 @@
 <ul>
 <li><code>rialtoB2A(CASS)TestCase15.feature, ...18.feature</code>
 <ul>
-<li><code>User perform CASS POST API - #1.1</code> — <code>packageId</code>, <code>productId</code>, and <code>moduleCode</code> arrays continue to return in the wrong order.</li>
+<li><code>User perform CASS POST API - #1.1</code> — <code>packageId</code>, <code>productId</code>, and <code>moduleCode</code> arrays continued to return in the wrong order.</li>
 </ul></li>
 <li><code>rialtoB2A(CASS)TestCase23.feature, ...24.feature</code>
 <ul>
-<li><code>Verify updated/reverted MediaHouse basket state - #1.1</code> — <code>paCode</code>, <code>plaCode</code>, <code>prodCode</code>, <code>placementId</code>, and <code>issueDate</code> stay stale or come back reordered after revert flows.</li>
+<li><code>Verify updated/reverted MediaHouse basket state - #1.1</code> — <code>paCode</code>, <code>plaCode</code>, <code>prodCode</code>, <code>placementId</code>, and <code>issueDate</code> stayed stale or came back reordered after revert flows.</li>
 </ul></li>
 <li><code>rialtoB2A(CASS)TestCase35.feature, ...37.feature</code>
 <ul>
-<li><code>RIALTO / MEDIAHOUSE verification steps</code> — Placement, depth, and issue-date changes are still not restored to the requested state.</li>
+<li><code>RIALTO / MEDIAHOUSE verification steps</code> — Placement, depth, and issue-date changes were still not restored to the requested state.</li>
 </ul></li>
 </ul>
 <h3>4. Basket identity and path-parameter drift</h3>
@@ -117,7 +126,7 @@
 </ul></li>
 <li><code>rialtoB2A(CASS)TestCase1-2.feature, ...24.feature, ...35.feature</code>
 <ul>
-<li><code>User perform CASS POST API / Verify reverted state - #1.1</code> — <code>mhBasketOrderId</code>/<code>uuid</code> propagation breaks in TC1/2 and TC24, while TC35 still reports <code>MH basket ID</code> vs <code>Agency Prisa ID</code> drift.</li>
+<li><code>User perform CASS POST API / Verify reverted state - #1.1</code> — <code>mhBasketOrderId</code> / <code>uuid</code> propagation broke in TC1/2 and TC24, while TC35 still reported <code>MH basket ID</code> vs <code>Agency Prisa ID</code> drift.</li>
 </ul></li>
 </ul>
 <h3>5. Backend rollback and parsing failures</h3>
@@ -136,7 +145,7 @@
 </ul></li>
 <li><code>rialtoB2A(CASS)TestCase18.feature, ...23.feature, ...24.feature</code>
 <ul>
-<li><code>User perform CASS POST API / revert flows</code> — Internal builds continue to hit rollback-only HTTP 500 responses during multi-line update and revert scenarios.</li>
+<li><code>User perform CASS POST API / revert flows</code> — Internal builds continued to hit rollback-only HTTP 500 responses during multi-line update and revert scenarios.</li>
 </ul></li>
 </ul>
 <h3>6. StoreStatus response-code regression (<code>N200</code> vs <code>N202</code>)</h3>
