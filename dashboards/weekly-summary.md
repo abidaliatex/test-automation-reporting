@@ -2,7 +2,7 @@
 
 **Period:** 2026-08-03 → 2026-08-09  
 **Generated:** 2026-08-09  
-**Observed builds:** 18 | **Failed/Unstable builds:** 18 | **Jobs affected:** 2
+**Observed builds:** 19 | **Failed/Unstable builds:** 19 | **Jobs affected:** 2
 
 ---
 
@@ -114,10 +114,10 @@
 
 ## Key Observations
 
-- All 18 observed builds in this window were `UNSTABLE` (0% build-level pass rate).
-- `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` produced 348 of 382 failed tests this week (91.1%) even though it accounted for only 6 of the 18 builds.
+- All 19 observed builds in this window were `UNSTABLE` (0% build-level pass rate).
+- `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` produced 405 of 441 failed tests this week (91.8%) across 7 builds (160–166).
 - The trunk job stayed near its 2-3 recurring failures for most of the week, but build `#364` temporarily spiked to 4 failures when JSON parsing and `uuid` path-parameter issues reappeared together.
-- The internal job narrowed from 64 failed tests on 2026-08-03 to 55-58 failures per run afterward, but the same pricing, state-propagation, and revert-flow defects remained active in the latest build (`#165`).
+- The internal job consistently returned 55–58 failures per run; build `#166` (2026-08-09 21:03–22:36 UTC, the latest) confirms the same pricing, state-propagation, and revert-flow defects remain fully active.
 - No `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo` reports were generated in this weekly window.
 
 ## Recommended Actions
@@ -135,6 +135,7 @@
 |---|---|---|---|
 | [automationrunCAI-RIALTO-B2A-trunk #365](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-365.md) | 2026-08-09 | UNSTABLE | n/a |
 | [automationrunCAI-RIALTO-B2A-trunk #364](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-364.md) | 2026-08-09 | UNSTABLE | n/a |
+| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #166](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-166.md) | 2026-08-09 | UNSTABLE | n/a |
 | [automationrunCAI-RIALTO-B2A-trunk #363](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-363.md) | 2026-08-08 | UNSTABLE | n/a |
 | [automationrunCAI-RIALTO-B2A-trunk #362](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-362.md) | 2026-08-08 | UNSTABLE | n/a |
 | [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #165](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-165.md) | 2026-08-08 | UNSTABLE | n/a |

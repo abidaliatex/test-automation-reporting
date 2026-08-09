@@ -30,7 +30,7 @@
 <h1>Weekly Test Failure Summary</h1>
 <p><strong>Period:</strong> 2026-08-03 → 2026-08-09<br />
 <strong>Generated:</strong> 2026-08-09<br />
-<strong>Observed builds:</strong> 18 | <strong>Failed/Unstable builds:</strong> 18 | <strong>Jobs affected:</strong> 2</p>
+<strong>Observed builds:</strong> 19 | <strong>Failed/Unstable builds:</strong> 19 | <strong>Jobs affected:</strong> 2</p>
 <hr />
 <h2>Root Cause Groups</h2>
 <h3>1. Pricing, totals, and precision mismatches</h3>
@@ -158,10 +158,10 @@
 <hr />
 <h2>Key Observations</h2>
 <ul>
-<li>All 18 observed builds in this window were <code>UNSTABLE</code> (0% build-level pass rate).</li>
-<li><code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code> produced 348 of 382 failed tests this week (91.1%) even though it accounted for only 6 of the 18 builds.</li>
+<li>All 19 observed builds in this window were <code>UNSTABLE</code> (0% build-level pass rate).</li>
+<li><code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code> produced 405 of 441 failed tests this week (91.8%) across 7 builds (160–166).</li>
 <li>The trunk job stayed near its 2-3 recurring failures for most of the week, but build <code>#364</code> temporarily spiked to 4 failures when JSON parsing and <code>uuid</code> path-parameter issues reappeared together.</li>
-<li>The internal job narrowed from 64 failed tests on 2026-08-03 to 55-58 failures per run afterward, but the same pricing, state-propagation, and revert-flow defects remained active in the latest build (<code>#165</code>).</li>
+<li>The internal job consistently returned 55–58 failures per run; build <code>#166</code> (2026-08-09 21:03–22:36 UTC, the latest) confirms the same pricing, state-propagation, and revert-flow defects remain fully active.</li>
 <li>No <code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo</code> reports were generated in this weekly window.</li>
 </ul>
 <h2>Recommended Actions</h2>
@@ -176,6 +176,7 @@
 <div class="table-wrapper"><table><thead><tr><th>Build</th><th>Date</th><th>Status</th><th>Triage</th></tr></thead><tbody>
 <tr><td><a href="../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-365.md">automationrunCAI-RIALTO-B2A-trunk #365</a></td><td>2026-08-09</td><td><span class="status-failure">UNSTABLE</span></td><td>n/a</td></tr>
 <tr><td><a href="../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-364.md">automationrunCAI-RIALTO-B2A-trunk #364</a></td><td>2026-08-09</td><td><span class="status-failure">UNSTABLE</span></td><td>n/a</td></tr>
+<tr><td><a href="../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-166.md">automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #166</a></td><td>2026-08-09</td><td><span class="status-failure">UNSTABLE</span></td><td>n/a</td></tr>
 <tr><td><a href="../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-363.md">automationrunCAI-RIALTO-B2A-trunk #363</a></td><td>2026-08-08</td><td><span class="status-failure">UNSTABLE</span></td><td>n/a</td></tr>
 <tr><td><a href="../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-362.md">automationrunCAI-RIALTO-B2A-trunk #362</a></td><td>2026-08-08</td><td><span class="status-failure">UNSTABLE</span></td><td>n/a</td></tr>
 <tr><td><a href="../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-165.md">automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #165</a></td><td>2026-08-08</td><td><span class="status-failure">UNSTABLE</span></td><td>n/a</td></tr>
