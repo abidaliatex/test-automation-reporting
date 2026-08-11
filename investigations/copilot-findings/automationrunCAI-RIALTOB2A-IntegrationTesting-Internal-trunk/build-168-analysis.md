@@ -17,7 +17,7 @@ Pass Rate: 92.8%
 
 ## Root Cause Groups
 
-## Order-Line Sequencing / Mapping Drift
+### Order-Line Sequencing / Mapping Drift
 
 **Affected Features:**
 - rialtoB2A(CASS TC15 2 products change date MH on head order line)
@@ -44,7 +44,7 @@ Pass Rate: 92.8%
 
 **Confidence:** High
 
-## Revert Flow / Identifier Propagation Failure
+### Revert Flow / Identifier Propagation Failure
 
 **Affected Features:**
 - rialtoB2A(CASS TC23 in MH change from Full page to uppslag - two orderlines change)
@@ -69,7 +69,7 @@ Pass Rate: 92.8%
 
 **Confidence:** High
 
-## Magazine Pricing / Discount / Status Drift
+### Magazine Pricing / Discount / Status Drift
 
 **Affected Features:**
 - rialtoB2A(CASS TC26 Basic order for magazines)
@@ -107,13 +107,13 @@ Pass Rate: 92.8%
 
 **Confidence:** High
 
-## Single-Order Placement / Pricing Drift
+### Single-Order Placement / Pricing Drift
 
 **Affected Features:**
 - rialtoB2A(CASS TC3 change Size)
 - rialtoB2A(CASS TC4 Change Placement)
 - rialtoB2A(CASS TC5 change to Uppslag/Spread/Panorama)
-- rialtoB2A(CASS TC6 change to changes the date and the size on the order line.)
+- rialtoB2A(CASS TC6 changes the date and the size on the order line.)
 - rialtoB2A(CASS TC9 change size from Rialto)
 
 **Affected Scenarios:**
