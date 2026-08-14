@@ -17,7 +17,7 @@ Pass Rate: 82.4%
 
 ## Root Cause Groups
 
-## Response Payload Numeric Mismatch
+### Response Payload Numeric Mismatch
 
 **Affected Features:**
 - rialtoB2A(CASS).feature
@@ -37,7 +37,7 @@ Expected numeric values in response payload do not match actual values returned 
 
 **Confidence:** High
 
-## Status Code Contract/Timing Mismatch
+### Status Code Contract/Timing Mismatch
 
 **Affected Features:**
 - rialtoB2A(CASS).feature
