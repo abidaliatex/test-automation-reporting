@@ -30,13 +30,13 @@
 
 ### 2. tc_patchRialtoB2A01 — Update ad(Order) for self service
 - **Feature:** `rialtoB2A(CASS).feature` (line 97)
-- **Step Failed:** `User perfrom "post" request with request body "Request Body" and alterd IDs from recent created ad`
+- **Step Failed:** `User perform "post" request with request body "Request Body" and altered IDs from recent created ad`
 - **Error:** `Failed to parse the JSON document`
 - **Stack Trace (Top):** `stepDefinition.ApiStepDefinition.user_perfrom_request_with_request_body_and_alterd_IDs_from_recent_created_ad(ApiStepDefinition.java:985)`
 
 ### 3. tc_getRialtoB2A06 — Returns StoreStatus of Update Order
 - **Feature:** `rialtoB2A(CASS).feature`
-- **Step Failed:** `User perfrom "get" request with keys "uuid"`
+- **Step Failed:** `User perform "get" request with keys "uuid"`
 - **Error:** `Invalid number of path parameters. Expected 1, was 0. Undefined path parameters are: uuid.`
 - **Stack Trace (Top):** `stepDefinition.ApiStepDefinition.user_perfrom_request_with_keys(...)`
 

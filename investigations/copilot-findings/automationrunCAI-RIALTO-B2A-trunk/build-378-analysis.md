@@ -17,7 +17,7 @@ Pass Rate: 76.5%
 
 ## Root Cause Groups
 
-## StoreStatus response still pending
+### StoreStatus response still pending
 
 **Affected Features:**
 - rialtoB2A(CASS).feature
@@ -36,7 +36,7 @@ expected [N200] but found [N202]
 
 **Confidence:** High
 
-## Update-order response is not parseable, causing downstream UUID loss
+### Update-order response is not parseable, causing downstream UUID loss
 
 **Affected Features:**
 - rialtoB2A(CASS).feature
@@ -56,7 +56,7 @@ Failed to parse the JSON document
 
 **Confidence:** High
 
-## Pricing assertion drift
+### Pricing assertion drift
 
 **Affected Features:**
 - rialtoB2A(CASS).feature
@@ -79,14 +79,26 @@ expected [[89392.58, 89392.58]] but found [[44696.29, 44696.29]]
 
 ## Summary
 
-**Root Cause:** Build 378 contains three distinct failure groups: a standalone `202` StoreStatus timing/contract mismatch, a non-JSON update-order response that cascades into a missing-UUID GET failure, and a separate pricing-value assertion drift.
+Build 378 contains three distinct failure groups: a standalone `202` StoreStatus timing/contract mismatch, a non-JSON update-order response that cascades into a missing-UUID GET failure, and a separate pricing-value assertion drift.
 
-**Affected Components:** Rialto B2A CASS StoreStatus flow, update-order flow, and self-service pricing validation.
+## Root Cause
 
-**Recommended Fix:**
+The evidence points to one response-status mismatch, one update-flow parsing failure that breaks downstream UUID reuse, and one independent pricing assertion mismatch.
+
+## Affected Components
+
+- Rialto B2A CASS StoreStatus flow
+- Rialto B2A CASS update-order flow
+- Rialto B2A CASS self-service pricing validation
+
+## Recommended Fix
+
 - Verify whether `storeStatus` is now intentionally asynchronous and update the assertion or polling accordingly.
 - Inspect the response returned by `tc_patchRialtoB2A01` and restore a valid JSON payload/UUID handoff before `tc_getRialtoB2A06`.
 - Reconcile the expected pricing data for `tc_postRialtoB2A03` with the current backend output.
 
-**Prevention:**
+## Prevention
+
+- Add polling or an explicit contract check for `storeStatus` so asynchronous `202` responses do not fail a scenario that expects eventual completion.
 - Add validation around update-flow UUID capture so downstream scenarios fail with the primary cause instead of a secondary missing-parameter error.
+- Re-baseline pricing assertions whenever backend pricing rules change so fixed expected values do not drift from live responses.
