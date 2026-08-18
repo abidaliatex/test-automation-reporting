@@ -16,7 +16,7 @@ Pass Rate: 88.2%
 
 ## Root Cause Groups
 
-## Pricing Assertion Mismatch
+### Pricing Assertion Mismatch
 
 **Affected Features:**
 - rialtoB2A(CASS).feature
