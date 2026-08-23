@@ -16,7 +16,7 @@ Pass Rate: 88.2%
 
 ## Root Cause Groups
 
-## Numeric Value Mismatch in API Response Assertions
+### Numeric Value Mismatch in API Response Assertions
 
 **Affected Features:**
 - rialtoB2A(CASS).feature
