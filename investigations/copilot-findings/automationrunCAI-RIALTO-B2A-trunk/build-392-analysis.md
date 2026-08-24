@@ -20,7 +20,7 @@
 
 ## Root Cause Groups
 
-## Incorrect Numeric Values in Response Body
+### Incorrect Numeric Values in Response Body
 
 **Affected Features:**
 - rialtoB2A(CASS).feature
