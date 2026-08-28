@@ -16,7 +16,7 @@ Pass Rate: 89.1%
 
 ## Root Cause Groups
 
-## Order field/state mismatch
+### Order field/state mismatch
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase4.feature`, `rialtoB2A(CASS)TestCase5.feature`, `rialtoB2A(CASS)TestCase6.feature`, `rialtoB2A(CASS)TestCase9.feature`
@@ -49,7 +49,7 @@ Pass Rate: 89.1%
 
 **Confidence:** High
 
-## Transaction rollback on MediaHouse updates
+### Transaction rollback on MediaHouse updates
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase22.feature`
@@ -75,7 +75,7 @@ Pass Rate: 89.1%
 
 **Confidence:** High
 
-## Internal server error on POST
+### Internal server error on POST
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase14.feature`
@@ -96,7 +96,7 @@ Pass Rate: 89.1%
 
 **Confidence:** Medium
 
-## Path parameter misconfiguration
+### Path parameter misconfiguration
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase24.feature`
@@ -115,7 +115,7 @@ Pass Rate: 89.1%
 
 **Confidence:** High
 
-## Integration ID mismatch
+### Integration ID mismatch
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase35.feature`
