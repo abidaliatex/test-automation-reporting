@@ -16,7 +16,7 @@ Pass Rate: 88.1%
 
 ## Root Cause Groups
 
-## Order field/state mismatch after update flows
+### Order field/state mismatch after update flows
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase4.feature`, `rialtoB2A(CASS)TestCase5.feature`, `rialtoB2A(CASS)TestCase6.feature`, `rialtoB2A(CASS)TestCase9.feature`
@@ -48,7 +48,7 @@ Pass Rate: 88.1%
 
 **Confidence:** High
 
-## Transaction rollback on MediaHouse updates
+### Transaction rollback on MediaHouse updates
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase22.feature`
@@ -73,7 +73,7 @@ Pass Rate: 88.1%
 
 **Confidence:** High
 
-## Internal server error on POST
+### Internal server error on POST
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase14.feature`
@@ -94,7 +94,7 @@ Pass Rate: 88.1%
 
 **Confidence:** Medium
 
-## Path parameter / basket ID propagation errors
+### Path parameter / basket ID propagation errors
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase24.feature`
@@ -117,7 +117,7 @@ Pass Rate: 88.1%
 
 **Confidence:** High
 
-## Basket lookup and ID synchronization failures
+### Basket lookup and ID synchronization failures
 
 **Affected Features:**
 - `rialtoB2A(CASS)TestCase35.feature`
