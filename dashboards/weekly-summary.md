@@ -1,8 +1,8 @@
 # Weekly Test Failure Summary
 
-**Period:** 2026-08-21 → 2026-08-27  
-**Generated:** 2026-08-28  
-**Observed builds:** 16 | **Failed/Unstable builds:** 16 | **Jobs affected:** 2
+**Period:** 2026-08-28 → 2026-09-03  
+**Generated:** 2026-09-04  
+**Observed builds:** 7 | **Failed/Unstable builds:** 7 | **Jobs affected:** 2
 
 ---
 
@@ -10,203 +10,151 @@
 
 | Root Cause | Affected Jobs | Total Failures | First Seen | Still Active | Confidence |
 |---|---|---:|---|---|---|
-| Trunk StoreStatus payload mismatch (`tc_getRialtoB2A05`) | `automationrunCAI-RIALTO-B2A-trunk` | 11 | 2026-08-21 | Yes | High |
-| Trunk self-service pricing halved (`tc_postRialtoB2A03`) | `automationrunCAI-RIALTO-B2A-trunk` | 11 | 2026-08-21 | Yes | High |
-| Trunk StoreStatus response-code regression (`N200` vs `N202`) | `automationrunCAI-RIALTO-B2A-trunk` | 2 | 2026-08-25 | Yes | High |
-| Internal single-order placement and pricing drift | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 25 | 2026-08-21 | Yes | High |
-| Internal multi-line sequencing and field-mapping drift | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 50 | 2026-08-21 | Yes | High |
-| Internal transaction rollback on MH updates (N400) | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 38 | 2026-08-24 | Yes | High |
-| Internal revert-flow and identifier propagation failures | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 30 | 2026-08-21 | Yes | High |
-| Internal magazine pricing, discount, and status drift | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 78 | 2026-08-21 | Yes | High |
+| `tc_getRialtoB2A05` StoreStatus payload mismatch | `automationrunCAI-RIALTO-B2A-trunk` | 4 | 2026-08-28 | Yes | High |
+| `tc_postRialtoB2A03` self-service pricing halved | `automationrunCAI-RIALTO-B2A-trunk` | 4 | 2026-08-28 | Yes | High |
+| `N200` vs `N202` response-code regression | `automationrunCAI-RIALTO-B2A-trunk` | 1 | 2026-08-30 | Yes | Medium |
+| Internal order field and array-order drift after update flows | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | ~153 | 2026-08-28 | Yes | High |
+| Internal MediaHouse transaction rollback (N400) | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | ~30 | 2026-08-28 | Yes | High |
+| Internal path parameter / basket ID propagation failures | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | ~8 | 2026-08-28 | Yes | High |
 
 ---
 
 ## Root Cause Group Details
 
-### 1. Trunk StoreStatus payload mismatch (`tc_getRialtoB2A05`)
+### 1. `tc_getRialtoB2A05` StoreStatus payload mismatch
 
 | Field | Detail |
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTO-B2A-trunk` |
-| Total Failures | 11 (all 11 trunk builds this week) |
-| First Seen | 2026-08-21 (build #386; originally build 231) |
+| Total Failures | 4 (builds #398–#401) |
+| First Seen | 2026-08-28 (build #398) |
 | Still Active | Yes |
 | Confidence | High |
 
 **Affected Feature Files & Scenarios:**
 - `rialtoB2A(CASS).feature`
-  - `tc_getRialtoB2A05` — "Returns StoreStatus of Order": element `[3]` iterator mismatch `276757.2` expected vs `369009.6` found. Present in every trunk run this week (#386–#397, excluding #391 which has no report file).
+  - `tc_getRialtoB2A05` — "Returns StoreStatus of Order": iterator mismatch `276757.2` expected vs `369009.6` found. Present in every trunk build in this reporting week.
 
 ---
 
-### 2. Trunk self-service pricing halved (`tc_postRialtoB2A03`)
+### 2. `tc_postRialtoB2A03` self-service pricing halved
 
 | Field | Detail |
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTO-B2A-trunk` |
-| Total Failures | 11 (all 11 trunk builds this week) |
-| First Seen | 2026-08-21 (build #386; originally build 231) |
+| Total Failures | 4 (builds #398–#401) |
+| First Seen | 2026-08-28 (build #398) |
 | Still Active | Yes |
 | Confidence | High |
 
 **Affected Feature Files & Scenarios:**
 - `rialtoB2A(CASS).feature`
-  - `tc_postRialtoB2A03` — "Calculate price for self service": response body fields return `[44696.29, 44696.29]` where `[89392.58, 89392.58]` (exactly double) is expected. Present in every trunk run this week.
+  - `tc_postRialtoB2A03` — "Calculate price for self service": returned `[44696.29, 44696.29]` where `[89392.58, 89392.58]` is expected. Repeated in every trunk build this week.
 
 ---
 
-### 3. Trunk StoreStatus response-code regression (`N200` vs `N202`)
+### 3. `N200` vs `N202` response-code regression
 
 | Field | Detail |
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTO-B2A-trunk` |
-| Total Failures | 2 (builds #394, #396) |
-| First Seen | 2026-08-25 (build #394) |
+| Total Failures | 1 (build #400) |
+| First Seen | 2026-08-30 (build #400) |
 | Still Active | Yes |
-| Confidence | High |
+| Confidence | Medium |
 
 **Affected Feature Files & Scenarios:**
 - `rialtoB2A(CASS).feature`
-  - `tc_getRialtoB2A06` — "Returns StoreStatus of Update Order": status code step returns `N202` where `N200` is required. Appeared on 2026-08-25 and 2026-08-26; absent from #386–#393 and #395, #397 — intermittent pattern consistent with prior weeks.
+  - `tc_getRialtoB2A06` — "Returns StoreStatus of Update Order": expected `N200` but received `N202` in the latest trunk run.
 
 ---
 
-### 4. Internal single-order placement and pricing drift
+### 4. Internal order field and array-order drift after update flows
 
 | Field | Detail |
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
-| Total Failures | ~25 grouped failures across builds #177, #180–#183 |
-| First Seen | 2026-08-21 (build #177) |
+| Total Failures | ~153 across builds #184, #186, #187 |
+| First Seen | 2026-08-28 (build #184) |
 | Still Active | Yes |
 | Confidence | High |
 
 **Affected Feature Files & Scenarios:**
 - `rialtoB2A(CASS)TestCase4.feature`
-  - `CASS TC4 Change Placement` — `orderHeader.statusFlags` expected `[PRELIMINARY]` found `[]` (all 5 builds).
+  - `CASS TC4 Change Placement` — `orderHeader.statusFlags` expected `[PRELIMINARY]` found `[]`.
 - `rialtoB2A(CASS)TestCase5.feature`
-  - `CASS TC5 change to Uppslag/Spread/Panorama` — `discountAmount` expected `0.0` found `63660.63`; `priceGross` mismatch (all 5 builds).
-- `rialtoB2A(CASS)TestCase6.feature`
-  - `CASS TC6 change date and size` — `priceNetExComm`/`priceGross`/`commission` mismatches after size change (all 5 builds).
-- `rialtoB2A(CASS)TestCase9.feature`
-  - `CASS TC9 change size from Rialto` — `discountAmount`/`priceNetExComm` mismatch on POST; `depth`/`moduleCode` mismatch on GET (all 5 builds).
-
----
-
-### 5. Internal multi-line sequencing and field-mapping drift
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
-| Total Failures | ~50 grouped failures across builds #177, #180–#183 |
-| First Seen | 2026-08-21 (build #177) |
-| Still Active | Yes |
-| Confidence | High |
-
-**Affected Feature Files & Scenarios:**
+  - `CASS TC5 change to Uppslag/Spread/Panorama` — `discountAmount`/`priceGross` mismatches after update.
 - `rialtoB2A(CASS)TestCase14.feature`
-  - `CASS TC14 change Product, Size, Placement & Date from Rialto` — HTTP 500 (`N500` instead of `N200`) on POST (all 5 builds); `paCode`/`prodCode`/`plaCode` and amount mismatches on GET.
-- `rialtoB2A(CASS)TestCase15.feature`
-  - `CASS TC15 2 products change date MH on head order line` — `paCode`/`prodCode`/`issueDate` array ordering wrong on GET; `packageId`/`productId` ordering mismatch on POST (all 5 builds).
+  - `CASS TC14 change Product, Size, Placement & Date from Rialto` — package and placement ordering mismatches on POST/GET.
 - `rialtoB2A(CASS)TestCase16.feature` / `TestCase17.feature` / `TestCase18.feature`
-  - TC16, TC17, TC18 — `printDetails` field ordering mismatch on POST and GET (builds #182, #183; newly escalating).
-- `rialtoB2A(CASS)TestCase19.feature`
-  - `CASS TC19 2 products change placement on head order from MH` — `packageId`/`productId` ordering mismatch (all 5 builds).
-- `rialtoB2A(CASS)TestCase20.feature`
-  - `CASS TC20 2 products change placement (non-head) from MH` — `placementId` expected `[TEXT, SIDAN3]` found `[TEXT, TEXT]` (all 5 builds).
+  - `printDetails` ordering mismatch observed in the latest internal builds.
 - `rialtoB2A(CASS)TestCase22.feature`
-  - `CASS TC22 in MH change from Full page to uppslag` — `paCode`/`prodCode` ordering and `netAmount`/`grossAmount` value mismatches (all 5 builds); transaction rollback (N400) on POST introduced from build #180.
-
----
-
-### 6. Internal transaction rollback on MediaHouse updates (N400)
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
-| Total Failures | ~38 failures across builds #180–#183 |
-| First Seen | 2026-08-24 (build #180) |
-| Still Active | Yes |
-| Confidence | High |
-
-**Affected Feature Files & Scenarios:**
-- `rialtoB2A(CASS)TestCase22.feature`
-  - `CASS TC22 in MH change from Full page to uppslag` — `Transaction rolled back because it has been marked as rollback-only`; expected `N200` but got `N400` on POST (builds #180–#183).
-- `rialtoB2A(CASS)TestCase23.feature`
-  - `CASS TC23 in MH change from Full page to uppslag (two orderlines)` — rollback on both update and revert POST steps (builds #180–#183).
-- `rialtoB2A(CASS)TestCase24.feature`
-  - `CASS TC24 in MH change from uppslag to Full page` — rollback on update and revert POST steps (builds #180–#183).
-- `rialtoB2A(CASS)TestCase37.feature`
-  - `CASS TC37 2 Products Magazine (changes the size in MH)` — rollback on MH head-line date change (builds #180–#183).
-
-**Note:** This pattern was absent from build #177 (2026-08-21) and first appeared in build #180 (2026-08-24), suggesting a mid-week back-end regression.
-
----
-
-### 7. Internal revert-flow and identifier propagation failures
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
-| Total Failures | ~30 grouped failures across builds #177, #180–#183 |
-| First Seen | 2026-08-21 (build #177) |
-| Still Active | Yes |
-| Confidence | High |
-
-**Affected Feature Files & Scenarios:**
-- `rialtoB2A(CASS)TestCase23.feature`
-  - `CASS TC23 in MH change from Full page to uppslag (two orderlines)` — `netAmount` rounding and `orderDiscount` mismatch on updated and reverted baskets (all 5 builds).
-- `rialtoB2A(CASS)TestCase24.feature`
-  - `CASS TC24 in MH change from uppslag to Full page` — `placementId` remains `UPPSLAG` after revert (all 5 builds); redundant `agencyPrisaId` path parameter and undefined `uuid` causing hard API errors on Rialto verify step (all 5 builds); HTTP 500 on revert POST (builds #177, #180–#183).
-
----
-
-### 8. Internal magazine pricing, discount, and status drift
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
-| Total Failures | ~78 grouped failures across builds #177, #180–#183 |
-| First Seen | 2026-08-21 (build #177) |
-| Still Active | Yes |
-| Confidence | High |
-
-**Affected Feature Files & Scenarios:**
-- `rialtoB2A(CASS)TestCase28.feature`
-  - `CASS TC28 Magazine (change size)` — `statusFlags` expected `[PRELIMINARY]` found `[]` on Rialto revert verify (all 5 builds).
-- `rialtoB2A(CASS)TestCase29.feature`
-  - `CASS TC29 Magazine (change to Uppslag/Spread/Panorama)` — same `statusFlags` `[PRELIMINARY]` vs `[]` regression (all 5 builds).
+  - `CASS TC22 in MH change from Full page to uppslag` — ordering and amount mismatches persisted across the week.
 - `rialtoB2A(CASS)TestCase35.feature`
-  - `CASS TC35 Magazine (change Date, Size & Placement from Rialto)` — `placementId` expected `SIDAN2` found `HALVLIGG`; wrong `issueDate`/`depth`/`price` on Rialto; `orBoxid` vs Agency Prisa ID basket mismatch on MediaHouse (all 5 builds).
-- `rialtoB2A(CASS)TestCase36.feature`
-  - `CASS TC36 Magazine (change Product Size Placement & Date from Rialto)` — `orderDiscount`/`sumDiscount`/`netPrice` wrong on both original and updated MediaHouse state (all 5 builds).
+  - `CASS TC35 Magazine (change Date, Size & Placement from Rialto)` — field-order and basket-ID drift continue to fail.
+
+---
+
+### 5. Internal MediaHouse transaction rollback (N400)
+
+| Field | Detail |
+|-------|--------|
+| Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
+| Total Failures | ~30 across builds #184, #186, #187 |
+| First Seen | 2026-08-28 (build #184) |
+| Still Active | Yes |
+| Confidence | High |
+
+**Affected Feature Files & Scenarios:**
+- `rialtoB2A(CASS)TestCase22.feature`
+  - `CASS TC22 in MH change from Full page to uppslag` — `Transaction rolled back because it has been marked as rollback-only` on update/revert steps.
+- `rialtoB2A(CASS)TestCase23.feature`
+  - `CASS TC23 in MH change from Full page to uppslag (two orderlines)` — rollback on both POST update and revert operations.
+- `rialtoB2A(CASS)TestCase24.feature`
+  - `CASS TC24 in MH change from uppslag to Full page` — rollback errors persisted in the latest internal runs.
 - `rialtoB2A(CASS)TestCase37.feature`
-  - `CASS TC37 2 Products Magazine (changes the size in MH)` — `totalInclVat`/`vat`/`commission`/`orderbasketSummary` wrong on MediaHouse original and updated state; `placementId`/`depth`/`statusFlags` mismatch on Rialto verify (all 5 builds).
+  - `CASS TC37 2 Products Magazine (changes the size in MH)` — rollback on head-line date change.
+
+---
+
+### 6. Internal path parameter / basket ID propagation failures
+
+| Field | Detail |
+|-------|--------|
+| Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
+| Total Failures | ~8 across builds #184, #186, #187 |
+| First Seen | 2026-08-28 (build #184) |
+| Still Active | Yes |
+| Confidence | High |
+
+**Affected Feature Files & Scenarios:**
+- `rialtoB2A(CASS)TestCase24.feature`
+  - `CASS TC24 in MH change from uppslag to Full page` — redundant `agencyPrisaId` and undefined `uuid` path parameters during revert validation.
+- `rialtoB2A(CASS)TestCase35.feature`
+  - `CASS TC35 Magazine (change Date, Size & Placement from Rialto)` — `orBoxid`/Agency Prisa ID mismatch observed in MediaHouse verification.
+- `rialtoB2A(CASS)TestCase36.feature`
+  - `CASS TC36 Magazine (change Product Size Placement & Date from Rialto)` — basket lookup and ID synchronization failures remain active.
 
 ---
 
 ## Key Observations
 
-- All 16 observed builds were `UNSTABLE` (0% build-level pass rate).
-- `automationrunCAI-RIALTO-B2A-trunk` ran 11 builds (#386–#397, noting #391 absent from reports); the two chronic regressions (`tc_getRialtoB2A05`, `tc_postRialtoB2A03`) are now 160+ builds old and hit every single run with no sign of resolution.
-- The `N200→N202` regression in `tc_getRialtoB2A06` reappeared in builds #394 and #396 (absent from #386–#393, #395, #397), continuing the intermittent pattern observed in prior weeks.
-- `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` ran 5 builds (#177, #180–#183; #178 and #179 have no report files). **Total failures escalated significantly week-over-week**: build #177 had 33 failures, builds #180–#181 had 47 each, build #182 had 58, build #183 had 56.
-- **New escalation — Transaction rollback (N400):** A new wave of `Transaction rolled back because it has been marked as rollback-only` errors on TC22, TC23, TC24, and TC37 first appeared in build #180 (2026-08-24) and persisted through build #183. This was absent from build #177 and from the previous week, pointing to a back-end regression introduced on or around 2026-08-24.
-- **TC16, TC17, TC18 newly failing:** These scenarios had not been listed in prior weeks but appear in builds #182 and #183 with field-ordering mismatches, indicating the array-ordering regression is spreading to additional TCs.
-- **TC21 newly failing in build #183:** HTTP 500 on CASS POST, not seen previously.
-- `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo` produced no new builds this week (latest report remains build-326, dated 2026-07-28).
+- All 7 observed builds this week were `UNSTABLE`.
+- `automationrunCAI-RIALTO-B2A-trunk` reported 4 consecutive unstable builds (#398–#401). The two chronic issues (`tc_getRialtoB2A05` and `tc_postRialtoB2A03`) remained active throughout the week.
+- The `N200` vs `N202` response-code regression reappeared in build #400, indicating the status-code contract remains unstable on the trunk path.
+- `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` reported 3 active builds in this reporting window (#184, #186, #187), with elevated field-ordering drift and transaction rollback counts continuing to dominate the weekly failure profile.
+- The rollback regression remains persistent in the MediaHouse update/revert flows and is now the clearest new back-end issue in the internal job.
+- `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo` had no new build reports this week; the latest recorded run remains build #326 from 2026-07-28.
 
 ---
 
 ## Recommended Actions
 
-1. **Prioritise the trunk StoreStatus contract** — `tc_getRialtoB2A05` (payload mismatch) and `tc_postRialtoB2A03` (price halved) have been failing since build 231 and hit every trunk run; they should remain the immediate fix target.
-2. **Investigate the N400 transaction-rollback regression** — first seen in internal build #180 (2026-08-24) and affecting TC22–TC24 and TC37; correlate with any deployment or data change on that date and revert or patch before failure count climbs further.
-3. **Fix the `uuid` path parameter in TC24** — the `agencyPrisaId` redundant parameter and undefined `uuid` cause hard API errors on every revert step and compound the rollback failures.
-4. **Address the widening array-ordering regression** — TC14–TC22 and now TC16, TC17, TC18 all show `printDetails`/`orderAdDetails` field-ordering mismatches; a single fix to the comparison or sorting logic may resolve the bulk of the 50+ multi-line failures.
-5. **Stabilise the magazine scenarios (TC28–TC37)** — discount, `statusFlags`, commission, and basket-ID propagation remain stale after update/revert flows and account for the largest share (~35%) of internal failures.
-6. **Investigate TC21 HTTP 500** — first appeared in build #183; confirm whether this is a new regression or a transient environment issue.
-7. **Re-run or verify the demo job** — no builds have been observed since 2026-07-28; confirm whether the job is still scheduled or has been disabled.
+1. **Prioritise the trunk payload and pricing contract** — `tc_getRialtoB2A05` and `tc_postRialtoB2A03` remained red in every trunk build and should be treated as the immediate remediation target.
+2. **Investigate the rollback regression in MediaHouse update/revert flows** — the N400 pattern is the clearest new regression in the internal job and should be correlated with the most recent backend deployment or data change.
+3. **Fix path parameter / basket ID propagation** — undefined `uuid` and `orBoxid`/Agency Prisa mismatches are compounding the internal failures and need a focused contract fix.
+4. **Address array-ordering drift across multi-line scenarios** — the ordering mismatches in `printDetails` and related arrays are likely caused by a single comparison/sorting issue and should be handled centrally.
+5. **Re-run or verify the demo job** — there were no new demo builds in this reporting window, so the job schedule or reporting pipeline should be checked.
 
 ---
 
@@ -214,10 +162,10 @@
 
 | Build | Date | Status | Pass Rate |
 |---|---|---|---|
-| [automationrunCAI-RIALTO-B2A-trunk #397](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-397.md) | 2026-08-27 | UNSTABLE | 88.2% |
-| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #183](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-183.md) | 2026-08-27 | UNSTABLE | 89.1% |
-| [automationrunCAI-RIALTO-B2A-trunk #396](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-396.md) | 2026-08-26 | UNSTABLE | 82.4% |
-| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #182](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-182.md) | 2026-08-26 | UNSTABLE | 88.7% |
+| [automationrunCAI-RIALTO-B2A-trunk #401](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-401.md) | 2026-08-31 | UNSTABLE | 88.2% |
+| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #187](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-187.md) | 2026-08-31 | UNSTABLE | 89.7% |
+| [automationrunCAI-RIALTO-B2A-trunk #400](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-400.md) | 2026-08-30 | UNSTABLE | 76.5% |
+| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #186](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-186.md) | 2026-08-30 | UNSTABLE | 88.1% |
 | [automationrunCAI-RIALTO-B2A-trunk #395](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-395.md) | 2026-08-25 | UNSTABLE | 88.2% |
 | [automationrunCAI-RIALTO-B2A-trunk #394](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-394.md) | 2026-08-25 | UNSTABLE | 82.4% |
 | [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #181](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-181.md) | 2026-08-25 | UNSTABLE | 90.9% |
