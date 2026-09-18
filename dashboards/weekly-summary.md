@@ -1,7 +1,7 @@
 # Weekly Test Failure Summary
 
 **Period:** 2026-08-25 → 2026-08-31  
-**Generated:** 2026-09-11  
+**Generated:** 2026-09-18  
 **Observed builds:** 14 | **Failed/Unstable builds:** 14 | **Jobs affected:** 2
 
 ---
