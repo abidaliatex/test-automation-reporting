@@ -14,8 +14,8 @@
 | `tc_postRialtoB2A03` self-service pricing halved | `automationrunCAI-RIALTO-B2A-trunk` | 8 | 2026-08-25 | Yes | High |
 | Cross-job path parameter / basket ID propagation failures | `automationrunCAI-RIALTO-B2A-trunk`, `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 21 | 2026-08-25 | Yes | High |
 | `N200` vs `N202` response-code regression | `automationrunCAI-RIALTO-B2A-trunk`, `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 5 | 2026-08-25 | Yes | Medium |
-| Internal order field / array-order drift after update flows | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | ~305 | 2026-08-25 | Yes | High |
-| Internal MediaHouse transaction rollback / API 500 regression | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | ~67 | 2026-08-25 | Yes | High |
+| Internal order field / array-order drift after update flows | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 305 | 2026-08-25 | Yes | High |
+| Internal MediaHouse transaction rollback / API 500 regression | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 67 | 2026-08-25 | Yes | High |
 
 ---
 
@@ -98,7 +98,7 @@
 | Field | Detail |
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
-| Total Failures | ~305 across builds #181, #182, #183, #184, #186, #187 |
+| Total Failures | 305 across builds #181, #182, #183, #184, #186, #187 |
 | First Seen | 2026-08-25 (build #181) |
 | Still Active | Yes |
 | Confidence | High |
@@ -122,7 +122,7 @@
 | Field | Detail |
 |-------|--------|
 | Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
-| Total Failures | ~67 across builds #181, #182, #183, #184, #186, #187 |
+| Total Failures | 67 across builds #181, #182, #183, #184, #186, #187 |
 | First Seen | 2026-08-25 (build #181) |
 | Still Active | Yes |
 | Confidence | High |
@@ -144,7 +144,7 @@
 - `automationrunCAI-RIALTO-B2A-trunk` reported 8 consecutive unstable builds (#394–#401). The chronic StoreStatus payload mismatch stayed red in 7 builds, while the self-service pricing defect appeared in all 8.
 - The `N200` vs `N202` contract drift was no longer isolated to trunk: internal build `#187` showed the same response-code regression on `TC21`.
 - Shared path-parameter and basket-ID propagation failures now span both active jobs, with trunk build `#400` and six internal builds all surfacing missing IDs or mismatched basket references.
-- `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` dominated the weekly failure volume with ~305 order-field/array-order mismatches and ~67 rollback/API-500 failures across six builds.
+- `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` dominated the weekly failure volume with 305 order-field/array-order mismatches and 67 rollback/API-500 failures across six builds.
 - `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo` had no new build reports in this window; the latest recorded run remains build `#326` from `2026-07-28`.
 
 ---
