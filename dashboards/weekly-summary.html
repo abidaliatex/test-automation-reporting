@@ -43,56 +43,18 @@
   <p class="meta"><strong>Observed builds:</strong> 1 &nbsp;|&nbsp; <strong>Failed/Unstable builds:</strong> 1 &nbsp;|&nbsp; <strong>Jobs affected:</strong> 1</p>
   <hr />
   <h2>Root Cause Groups</h2>
-  <div class="table-wrap"><table><thead><tr><th>Root Cause</th><th>Affected Jobs</th><th style="text-align:right">Total Failures</th><th>First Seen</th><th>Still Active</th><th>Confidence</th></tr></thead><tbody>
-    <tr>
-      <td><code>tc_getRialtoB2A05</code> StoreStatus payload mismatch</td>
-      <td><code>automationrunCAI-RIALTO-B2A-trunk</code></td>
-      <td style="text-align:right">7</td>
-      <td>2026-08-25</td>
-      <td><span class="badge-active-yes">Yes</span></td>
-      <td><span class="badge-high">High</span></td>
-    </tr>
-    <tr>
-      <td><code>tc_postRialtoB2A03</code> self-service pricing halved</td>
-      <td><code>automationrunCAI-RIALTO-B2A-trunk</code></td>
-      <td style="text-align:right">8</td>
-      <td>2026-08-25</td>
-      <td><span class="badge-active-yes">Yes</span></td>
-      <td><span class="badge-high">High</span></td>
-    </tr>
-    <tr>
-      <td>Cross-job path parameter / basket ID propagation failures</td>
-      <td><code>automationrunCAI-RIALTO-B2A-trunk</code>, <code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td>
-      <td style="text-align:right">21</td>
-      <td>2026-08-25</td>
-      <td><span class="badge-active-yes">Yes</span></td>
-      <td><span class="badge-high">High</span></td>
-    </tr>
-    <tr>
-      <td><code>N200</code> vs <code>N202</code> response-code regression</td>
-      <td><code>automationrunCAI-RIALTO-B2A-trunk</code>, <code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td>
-      <td style="text-align:right">5</td>
-      <td>2026-08-25</td>
-      <td><span class="badge-active-yes">Yes</span></td>
-      <td><span class="badge-medium">Medium</span></td>
-    </tr>
-    <tr>
-      <td>Internal order field / array-order drift after update flows</td>
-      <td><code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td>
-      <td style="text-align:right">305</td>
-      <td>2026-08-25</td>
-      <td><span class="badge-active-yes">Yes</span></td>
-      <td><span class="badge-high">High</span></td>
-    </tr>
-    <tr>
-      <td>Internal MediaHouse transaction rollback / API 500 regression</td>
-      <td><code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td>
-      <td style="text-align:right">67</td>
-      <td>2026-08-25</td>
-      <td><span class="badge-active-yes">Yes</span></td>
-      <td><span class="badge-high">High</span></td>
-    </tr>
-  </tbody></table></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Root Cause</th><th>Affected Jobs</th><th>Total Failures</th><th>First Seen</th><th>Still Active</th><th>Confidence</th></tr></thead>
+    <tbody>
+      <tr><td>Missing adspace for variant 3</td><td><code>automationrunCAI-trunk</code></td><td>2</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-high">High</span></td></tr>
+      <tr><td>Adapter GET failures</td><td><code>automationrunCAI-trunk</code></td><td>2</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-high">High</span></td></tr>
+      <tr><td>BASE reference and version mismatches</td><td><code>automationrunCAI-trunk</code></td><td>2</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-medium">Medium</span></td></tr>
+      <tr><td>Unexpected customer activity results</td><td><code>automationrunCAI-trunk</code></td><td>3</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-medium">Medium</span></td></tr>
+      <tr><td>DWL response content mismatches</td><td><code>automationrunCAI-trunk</code></td><td>2</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-medium">Medium</span></td></tr>
+      <tr><td>MC order PATCH rejects zero order number</td><td><code>automationrunCAI-trunk</code></td><td>1</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-high">High</span></td></tr>
+      <tr><td>Print order POST lazy initialization error</td><td><code>automationrunCAI-trunk</code></td><td>3</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-high">High</span></td></tr>
+    </tbody>
+  </table></div>
   <hr />
   <h2>Root Cause Group Details</h2>
   <p>Jenkins provides suite labels, not feature filenames; suite labels are shown below.</p>
@@ -166,9 +128,25 @@
   <h3>5. DWL response content mismatches</h3>
   <div class="table-wrap"><table class="field-table">
     <tr><th>Field</th><th>Detail</th></tr>
-    <tr><td>Affected Jobs</td><td><code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td></tr>
-    <tr><td>Total Failures</td><td>305 across builds #181, #182, #183, #184, #186, #187</td></tr>
-    <tr><td>First Seen</td><td>2026-08-25 (build #181)</td></tr>
+    <tr><td>Affected Jobs</td><td><code>automationrunCAI-trunk</code></td></tr>
+    <tr><td>Total Failures</td><td>2</td></tr>
+    <tr><td>First Seen</td><td>2026-11-13 (build #190)</td></tr>
+    <tr><td>Still Active</td><td><span class="badge-active-yes">Yes</span></td></tr>
+    <tr><td>Confidence</td><td><span class="badge-medium">Medium</span></td></tr>
+  </table></div>
+  <p><strong>Affected Feature Files &amp; Scenarios:</strong></p>
+  <ul><li><code>DWL APIs</code><ul>
+    <li><code>tc_getdwl01</code> — Get Netsale rows; returned rows differed from expectations.</li>
+    <li><code>tc_getdwl02</code> — Get Online rows; the expected order ID <code>906588</code> was absent from the returned rows.</li>
+  </ul></li></ul>
+  <hr />
+
+  <h3>6. MC order PATCH rejects zero order number</h3>
+  <div class="table-wrap"><table class="field-table">
+    <tr><th>Field</th><th>Detail</th></tr>
+    <tr><td>Affected Jobs</td><td><code>automationrunCAI-trunk</code></td></tr>
+    <tr><td>Total Failures</td><td>1</td></tr>
+    <tr><td>First Seen</td><td>2026-11-13 (build #190)</td></tr>
     <tr><td>Still Active</td><td><span class="badge-active-yes">Yes</span></td></tr>
     <tr><td>Confidence</td><td><span class="badge-high">High</span></td></tr>
   </table></div>
@@ -181,9 +159,9 @@
   <h3>7. Print order POST lazy initialization error</h3>
   <div class="table-wrap"><table class="field-table">
     <tr><th>Field</th><th>Detail</th></tr>
-    <tr><td>Affected Jobs</td><td><code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code></td></tr>
-    <tr><td>Total Failures</td><td>67 across builds #181, #182, #183, #184, #186, #187</td></tr>
-    <tr><td>First Seen</td><td>2026-08-25 (build #181)</td></tr>
+    <tr><td>Affected Jobs</td><td><code>automationrunCAI-trunk</code></td></tr>
+    <tr><td>Total Failures</td><td>3</td></tr>
+    <tr><td>First Seen</td><td>2026-11-13 (build #190)</td></tr>
     <tr><td>Still Active</td><td><span class="badge-active-yes">Yes</span></td></tr>
     <tr><td>Confidence</td><td><span class="badge-high">High</span></td></tr>
   </table></div>
@@ -198,13 +176,9 @@
 
   <h2>Key Observations</h2>
   <ul>
-    <li>All 14 observed builds in this reporting window were <code>UNSTABLE</code>.</li>
-    <li>No build reports newer than <code>2026-08-31</code> were available; this is the latest report-backed window, not a current-week snapshot.</li>
-    <li><code>automationrunCAI-RIALTO-B2A-trunk</code> reported 8 consecutive unstable builds (#394–#401). The chronic StoreStatus payload mismatch stayed red in 7 builds, while the self-service pricing defect appeared in all 8.</li>
-    <li>The <code>N200</code> vs <code>N202</code> contract drift was no longer isolated to trunk: internal build <code>#187</code> showed the same response-code regression on <code>TC21</code>.</li>
-    <li>Shared path-parameter and basket-ID propagation failures now span both active jobs, with trunk build <code>#400</code> and six internal builds all surfacing missing IDs or mismatched basket references.</li>
-    <li><code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk</code> dominated the weekly failure volume with 305 order-field/array-order mismatches and 67 rollback/API-500 failures across six builds.</li>
-    <li><code>automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo</code> had no new build reports in this window; the latest recorded run remains build <code>#326</code> from <code>2026-07-28</code>.</li>
+    <li>The only build report dated in this reporting window is <code>automationrunCAI-trunk</code> build #190 (2026-11-13).</li>
+    <li>Build #190 was <code>UNSTABLE</code>: 15 of 199 tests failed, for a 92.5% pass rate.</li>
+    <li>The seven root-cause groups account for all 15 reported failures; all are present in the latest observed build.</li>
   </ul>
   <hr />
 
@@ -213,10 +187,10 @@
     <li><strong>Check variant-3 test data</strong> — confirm the configured adspace is present for the order POST scenarios.</li>
     <li><strong>Investigate Adapter GET responses</strong> — address the unexpected HTTP 400 responses and the mapped-adspaces null dereference.</li>
     <li><strong>Reconcile BASE expectations</strong> — verify the production-flow data and database version expected by the tests.</li>
-    <li><strong>Review customer and DWL test data</strong> — confirm expected result counts, activity IDs, and returned rows match the test environment.</li>
+    <li><strong>Review customer activity data</strong> — confirm expected result counts and activity IDs match the test environment.</li>
+    <li><strong>Validate DWL test data</strong> — confirm expected rows and order IDs match the returned results.</li>
     <li><strong>Validate PATCH inputs</strong> — ensure the test supplies a nonzero order number where required.</li>
     <li><strong>Fix print-order session handling</strong> — ensure service-fee prices are initialized while the persistence session is available.</li>
-    <li><strong>Check report coverage for other jobs</strong> — confirm their runs are being captured in the weekly reporting pipeline.</li>
   </ol>
   <hr />
 
