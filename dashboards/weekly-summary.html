@@ -39,7 +39,7 @@
 <div class="container">
   <h1>Weekly Test Failure Summary</h1>
   <p class="meta"><strong>Period:</strong> 2026-08-25 → 2026-08-31</p>
-  <p class="meta"><strong>Generated:</strong> 2026-09-18</p>
+  <p class="meta"><strong>Generated:</strong> 2026-11-13</p>
   <p class="meta"><strong>Observed builds:</strong> 14 &nbsp;|&nbsp; <strong>Failed/Unstable builds:</strong> 14 &nbsp;|&nbsp; <strong>Jobs affected:</strong> 2</p>
   <hr />
   <h2>Root Cause Groups</h2>
@@ -224,6 +224,7 @@
   <h2>Key Observations</h2>
   <ul>
     <li>All 14 observed builds in this reporting window were <code>UNSTABLE</code>.</li>
+    <li>No build reports newer than <code>2026-08-31</code> were available; this is the latest report-backed window, not a current-week snapshot.</li>
     <li><code>automationrunCAI-RIALTO-B2A-trunk</code> reported 8 consecutive unstable builds (#394–#401). The chronic StoreStatus payload mismatch stayed red in 7 builds, while the self-service pricing defect appeared in all 8.</li>
     <li>The <code>N200</code> vs <code>N202</code> contract drift was no longer isolated to trunk: internal build <code>#187</code> showed the same response-code regression on <code>TC21</code>.</li>
     <li>Shared path-parameter and basket-ID propagation failures now span both active jobs, with trunk build <code>#400</code> and six internal builds all surfacing missing IDs or mismatched basket references.</li>
