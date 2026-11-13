@@ -1,8 +1,8 @@
 # Weekly Test Failure Summary
 
-**Period:** 2026-08-25 → 2026-08-31  
+**Period:** 2026-11-09 → 2026-11-15<br>
 **Generated:** 2026-11-13<br>
-**Observed builds:** 14 | **Failed/Unstable builds:** 14 | **Jobs affected:** 2
+**Observed builds:** 1 | **Failed/Unstable builds:** 1 | **Jobs affected:** 1
 
 ---
 
@@ -21,79 +21,96 @@
 
 ## Root Cause Group Details
 
-### 1. `tc_getRialtoB2A05` StoreStatus payload mismatch
+Jenkins provides suite labels, not feature filenames; suite labels are shown below.
+
+### 1. Missing adspace for variant 3
 
 | Field | Detail |
 |-------|--------|
-| Affected Jobs | `automationrunCAI-RIALTO-B2A-trunk` |
-| Total Failures | 7 (builds #394–#399 and #401) |
-| First Seen | 2026-08-25 (build #394) |
+| Affected Jobs | `automationrunCAI-trunk` |
+| Total Failures | 2 |
+| First Seen | 2026-11-13 (build #190) |
 | Still Active | Yes |
 | Confidence | High |
 
 **Affected Feature Files & Scenarios:**
-- `rialtoB2A(CASS).feature`
-  - `tc_getRialtoB2A05` — "Returns StoreStatus of Order": iterator mismatch `276757.2` expected vs `369009.6` found in 7 of the 8 trunk builds this week.
+- `ADAPTERS APIs` / `MC ORDER APIs`
+  - `tc_mc_ord_post_05` — Create new order (for adapter), ONLINE, MC, POST.
+  - `tc_mc_ord_post_03` — Create new order, ONLINE, MC, POST.
+  - Both POST validations could not find an adspace for variant 3.
 
 ---
 
-### 2. `tc_postRialtoB2A03` self-service pricing halved
+### 2. Adapter GET failures
 
 | Field | Detail |
 |-------|--------|
-| Affected Jobs | `automationrunCAI-RIALTO-B2A-trunk` |
-| Total Failures | 8 (builds #394–#401) |
-| First Seen | 2026-08-25 (build #394) |
+| Affected Jobs | `automationrunCAI-trunk` |
+| Total Failures | 2 |
+| First Seen | 2026-11-13 (build #190) |
 | Still Active | Yes |
 | Confidence | High |
 
 **Affected Feature Files & Scenarios:**
-- `rialtoB2A(CASS).feature`
-  - `tc_postRialtoB2A03` — "Calculate price for self service": returned `[44696.29, 44696.29]` where `[89392.58, 89392.58]` is expected. Present in every trunk build in this reporting window.
+- `ADAPTERS APIs`
+  - `tc_getadapters02` — Get mapped data about an order-line; HTTP 400 instead of 200.
+  - `tc_getadapters05` — Get info about mapped adspaces; HTTP 400 instead of 200 and a `NullPointerException`.
 
 ---
 
-### 3. Cross-job path parameter / basket ID propagation failures
+### 3. BASE reference and version mismatches
 
 | Field | Detail |
 |-------|--------|
-| Affected Jobs | `automationrunCAI-RIALTO-B2A-trunk`, `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
-| Total Failures | 21 (internal builds #181, #182, #183, #184, #186, #187 plus trunk build #400) |
-| First Seen | 2026-08-25 (build #181) |
-| Still Active | Yes |
-| Confidence | High |
-
-**Affected Feature Files & Scenarios:**
-- `rialtoB2A(CASS).feature`
-  - Trunk build `#400` — update-order POST flow failed with `Undefined path parameters are: uuid`.
-- `rialtoB2A(CASS)TestCase24.feature`
-  - `TC24` — redundant `agencyPrisaId` and missing `uuid` path parameters persisted through revert validation.
-- `rialtoB2A(CASS)TestCase35.feature`
-  - `TC35` — `orBoxid` / Agency Prisa ID mismatches continued across MediaHouse verification.
-- `rialtoB2A(CASS)TestCase36.feature`
-  - `TC36` — basket lookup and `mhBasketOrderId` synchronization failures remained active.
-
----
-
-### 4. `N200` vs `N202` response-code regression
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-RIALTO-B2A-trunk`, `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
-| Total Failures | 5 (1 each in trunk builds #394, #396, #400 plus 2 failures in internal build #187) |
-| First Seen | 2026-08-25 (build #394) |
+| Affected Jobs | `automationrunCAI-trunk` |
+| Total Failures | 2 |
+| First Seen | 2026-11-13 (build #190) |
 | Still Active | Yes |
 | Confidence | Medium |
 
 **Affected Feature Files & Scenarios:**
-- `rialtoB2A(CASS).feature`
-  - `tc_getRialtoB2A06` — "Returns StoreStatus of Update Order": expected `N200` but received `N202` in three trunk builds this week.
-- `rialtoB2A(CASS)TestCase21.feature`
-  - `TC21` — internal POST flow reported 2 response-code mismatches with `expected [N200] but found [N202]` in build `#187`.
+- `BASE APIs`
+  - `tc_getbase10` — Get non-expired production flows for print; actual response also included `PROD2`.
+  - `tc_getbase22` — Get database version; expected `8.8`, received `8.9`.
 
 ---
 
-### 5. Internal order field / array-order drift after update flows
+### 4. Unexpected customer activity results
+
+| Field | Detail |
+|-------|--------|
+| Affected Jobs | `automationrunCAI-trunk` |
+| Total Failures | 3 |
+| First Seen | 2026-11-13 (build #190) |
+| Still Active | Yes |
+| Confidence | Medium |
+
+**Affected Feature Files & Scenarios:**
+- `CUSTOMER APIs`
+  - `tc_cust29` — Customer information objects for salesman and legal person combination; 4 results returned instead of 2.
+  - `tc_cust24` — Get customer activities; response included unexpected activity IDs.
+  - `tc_cust25` — Get salesman activities; response included unexpected activity IDs.
+
+---
+
+### 5. DWL response content mismatches
+
+| Field | Detail |
+|-------|--------|
+| Affected Jobs | `automationrunCAI-trunk` |
+| Total Failures | 2 |
+| First Seen | 2026-11-13 (build #190) |
+| Still Active | Yes |
+| Confidence | Medium |
+
+**Affected Feature Files & Scenarios:**
+- `DWL APIs`
+  - `tc_getdwl01` — Get Netsale rows; returned rows differed from expectations.
+  - `tc_getdwl02` — Get Online rows; the expected order ID `906588` was absent from the returned rows.
+
+---
+
+### 6. MC order PATCH rejects zero order number
 
 | Field | Detail |
 |-------|--------|
@@ -104,20 +121,12 @@
 | Confidence | High |
 
 **Affected Feature Files & Scenarios:**
-- `rialtoB2A(CASS)TestCase4.feature`
-  - `TC4` — `orderHeader.statusFlags` and related order-field assertions drifted after change/revert flows.
-- `rialtoB2A(CASS)TestCase14.feature`
-  - `TC14` — package, placement, and issue-date ordering mismatches persisted on POST and GET validation.
-- `rialtoB2A(CASS)TestCase16.feature` / `TestCase17.feature` / `TestCase18.feature`
-  - `printDetails` ordering remained unstable in multi-product scenarios.
-- `rialtoB2A(CASS)TestCase22.feature` / `TestCase23.feature` / `TestCase24.feature`
-  - MediaHouse update/revert flows continued to return reordered arrays and incorrect correlated field values.
-- `rialtoB2A(CASS)TestCase35.feature` / `TestCase36.feature` / `TestCase37.feature`
-  - Magazine scenarios still showed field-order drift, pricing side-effects, and basket-state mismatches.
+- `MC ORDER APIs`
+  - `tc_mc_ord_patch_09` — Update order, ONLINE, MC, PATCH; rejected because `ono=0`.
 
 ---
 
-### 6. Internal MediaHouse transaction rollback / API 500 regression
+### 7. Print order POST lazy initialization error
 
 | Field | Detail |
 |-------|--------|
@@ -128,12 +137,11 @@
 | Confidence | High |
 
 **Affected Feature Files & Scenarios:**
-- `rialtoB2A(CASS)TestCase14.feature`
-  - `TC14` — POST requests intermittently returned `N500` with `{"errorCode":1,"message":null}`.
-- `rialtoB2A(CASS)TestCase22.feature` / `TestCase23.feature` / `TestCase24.feature`
-  - Update and revert operations repeatedly failed with `Transaction rolled back because it has been marked as rollback-only`.
-- `rialtoB2A(CASS)TestCase37.feature`
-  - `TC37` — MediaHouse head-line updates continued to trigger rollback failures.
+- `PRINT ORDER APIs`
+  - `tc_print_ord_post_01` — Create new print order.
+  - `tc_print_ord_post_07` — Create new print order with `orTypeofsplit`.
+  - `tc_print_ord_post_08` — Create new print order without `orTypeofsplit`.
+  - All three failed when service-fee prices were accessed after the persistence session closed.
 
 ---
 
@@ -151,11 +159,13 @@
 
 ## Recommended Actions
 
-1. **Prioritise the trunk contract defects** — fix `tc_getRialtoB2A05` and `tc_postRialtoB2A03` first, because they remained the most stable recurring failures across the active trunk window.
-2. **Repair shared identifier propagation** — the missing `uuid`, `mhBasketOrderId`, and `orBoxid` / Agency Prisa mismatches now affect both jobs and are likely amplifying follow-on failures.
-3. **Investigate the internal rollback / N500 regression** — correlate the repeated rollback-only and `{"errorCode":1}` responses with the most recent backend deployment or transaction-handling change.
-4. **Normalise ordering and state comparison logic** — the internal suite still shows widespread array-order and correlated field drift after update flows, so a central comparison or sorting fix is likely needed.
-5. **Check demo-job freshness** — there were still no new demo reports, so the schedule or reporting pipeline for the demo job should be verified.
+1. **Check variant-3 test data** — confirm the configured adspace is present for the order POST scenarios.
+2. **Investigate Adapter GET responses** — address the unexpected HTTP 400 responses and the mapped-adspaces null dereference.
+3. **Reconcile BASE expectations** — verify the production-flow data and database version expected by the tests.
+4. **Review customer and DWL test data** — confirm expected result counts, activity IDs, and returned rows match the test environment.
+5. **Validate PATCH inputs** — ensure the test supplies a nonzero order number where required.
+6. **Fix print-order session handling** — ensure service-fee prices are initialized while the persistence session is available.
+7. **Check report coverage for other jobs** — confirm their runs are being captured in the weekly reporting pipeline.
 
 ---
 
@@ -163,21 +173,8 @@
 
 | Build | Date | Status | Pass Rate |
 |---|---|---|---|
-| [automationrunCAI-RIALTO-B2A-trunk #401](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-401.md) | 2026-08-31 | UNSTABLE | 88.2% |
-| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #187](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-187.md) | 2026-08-31 | UNSTABLE | 89.7% |
-| [automationrunCAI-RIALTO-B2A-trunk #400](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-400.md) | 2026-08-30 | UNSTABLE | 76.5% |
-| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #186](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-186.md) | 2026-08-30 | UNSTABLE | 88.1% |
-| [automationrunCAI-RIALTO-B2A-trunk #399](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-399.md) | 2026-08-29 | UNSTABLE | 88.2% |
-| [automationrunCAI-RIALTO-B2A-trunk #398](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-398.md) | 2026-08-28 | UNSTABLE | 88.2% |
-| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #184](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-184.md) | 2026-08-28 | UNSTABLE | 89.1% |
-| [automationrunCAI-RIALTO-B2A-trunk #397](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-397.md) | 2026-08-27 | UNSTABLE | 88.2% |
-| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #183](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-183.md) | 2026-08-27 | UNSTABLE | 89.1% |
-| [automationrunCAI-RIALTO-B2A-trunk #396](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-396.md) | 2026-08-26 | UNSTABLE | 82.4% |
-| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #182](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-182.md) | 2026-08-26 | UNSTABLE | 88.7% |
-| [automationrunCAI-RIALTO-B2A-trunk #395](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-395.md) | 2026-08-25 | UNSTABLE | 88.2% |
-| [automationrunCAI-RIALTO-B2A-trunk #394](../reports/build-failures/automationrunCAI-RIALTO-B2A-trunk/build-394.md) | 2026-08-25 | UNSTABLE | 82.4% |
-| [automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk #181](../reports/build-failures/automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk/build-181.md) | 2026-08-25 | UNSTABLE | 90.9% |
+| [automationrunCAI-trunk #190](../reports/build-failures/automationrunCAI-trunk/build-190.md) | 2026-11-13 | UNSTABLE | 92.5% |
 
 ---
 
-*This dashboard is regenerated weekly from the build reports in `reports/build-failures/`. Do not edit manually — rerun the weekly summary pipeline instead.*
+*This dashboard is regenerated weekly from the build reports in `reports/build-failures/`.*
