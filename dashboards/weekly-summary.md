@@ -10,13 +10,12 @@
 
 | Root Cause | Affected Jobs | Total Failures | First Seen | Still Active | Confidence |
 |---|---|---:|---|---|---|
-| Missing adspace for variant 3 | `automationrunCAI-trunk` | 2 | 2026-11-13 | Yes | High |
-| Adapter GET failures | `automationrunCAI-trunk` | 2 | 2026-11-13 | Yes | High |
-| BASE reference and version mismatches | `automationrunCAI-trunk` | 2 | 2026-11-13 | Yes | Medium |
-| Unexpected customer activity results | `automationrunCAI-trunk` | 3 | 2026-11-13 | Yes | Medium |
-| DWL response content mismatches | `automationrunCAI-trunk` | 2 | 2026-11-13 | Yes | Medium |
-| MC order PATCH rejects zero order number | `automationrunCAI-trunk` | 1 | 2026-11-13 | Yes | High |
-| Print order POST lazy initialization error | `automationrunCAI-trunk` | 3 | 2026-11-13 | Yes | High |
+| `tc_getRialtoB2A05` StoreStatus payload mismatch | `automationrunCAI-RIALTO-B2A-trunk` | 7 | 2026-08-25 | Yes | High |
+| `tc_postRialtoB2A03` self-service pricing halved | `automationrunCAI-RIALTO-B2A-trunk` | 8 | 2026-08-25 | Yes | High |
+| Cross-job path parameter / basket ID propagation failures | `automationrunCAI-RIALTO-B2A-trunk`, `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 21 | 2026-08-25 | Yes | High |
+| `N200` vs `N202` response-code regression | `automationrunCAI-RIALTO-B2A-trunk`, `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 5 | 2026-08-25 | Yes | Medium |
+| Internal order field / array-order drift after update flows | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 305 | 2026-08-25 | Yes | High |
+| Internal MediaHouse transaction rollback / API 500 regression | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` | 67 | 2026-08-25 | Yes | High |
 
 ---
 
@@ -115,9 +114,9 @@ Jenkins provides suite labels, not feature filenames; suite labels are shown bel
 
 | Field | Detail |
 |-------|--------|
-| Affected Jobs | `automationrunCAI-trunk` |
-| Total Failures | 1 |
-| First Seen | 2026-11-13 (build #190) |
+| Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
+| Total Failures | 305 across builds #181, #182, #183, #184, #186, #187 |
+| First Seen | 2026-08-25 (build #181) |
 | Still Active | Yes |
 | Confidence | High |
 
@@ -131,9 +130,9 @@ Jenkins provides suite labels, not feature filenames; suite labels are shown bel
 
 | Field | Detail |
 |-------|--------|
-| Affected Jobs | `automationrunCAI-trunk` |
-| Total Failures | 3 |
-| First Seen | 2026-11-13 (build #190) |
+| Affected Jobs | `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` |
+| Total Failures | 67 across builds #181, #182, #183, #184, #186, #187 |
+| First Seen | 2026-08-25 (build #181) |
 | Still Active | Yes |
 | Confidence | High |
 
@@ -148,10 +147,13 @@ Jenkins provides suite labels, not feature filenames; suite labels are shown bel
 
 ## Key Observations
 
-- The only build report dated in the reporting period was build #190 of `automationrunCAI-trunk`; it was unstable with 15 failures out of 199 tests and a 92.5% pass rate.
-- The seven root-cause groups account for all 15 reported failures.
-- No reports for other jobs were available in this reporting period, so their weekly status cannot be assessed from the repository reports.
-- Suite labels were provided instead of feature filenames in the Jenkins report.
+- All 14 observed builds in this reporting window were `UNSTABLE`.
+- No build reports newer than 2026-08-31 were available; this is the latest report-backed window, not a current-week snapshot.
+- `automationrunCAI-RIALTO-B2A-trunk` reported 8 consecutive unstable builds (#394–#401). The chronic StoreStatus payload mismatch stayed red in 7 builds, while the self-service pricing defect appeared in all 8.
+- The `N200` vs `N202` contract drift was no longer isolated to trunk: internal build `#187` showed the same response-code regression on `TC21`.
+- Shared path-parameter and basket-ID propagation failures now span both active jobs, with trunk build `#400` and six internal builds all surfacing missing IDs or mismatched basket references.
+- `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk` dominated the weekly failure volume with 305 order-field/array-order mismatches and 67 rollback/API-500 failures across six builds.
+- `automationrunCAI-RIALTOB2A-IntegrationTesting-Internal-trunk-demo` had no new build reports in this window; the latest recorded run remains build `#326` from `2026-07-28`.
 
 ---
 
