@@ -2,8 +2,7 @@
 
 ## Build Summary
 
-Build: [190](https://crossadv.atex.com/jenkins/job/automationrunCAI-trunk/190/)  
-Date: 2026-11-13 14:17:59 UTC | Status: UNSTABLE  
+Build: [190](https://crossadv.atex.com/jenkins/job/automationrunCAI-trunk/190/) | Date: 2026-11-13 14:17:59 UTC | Status: UNSTABLE
 Total Tests: 199 | Passed: 184 | Failed: 15 | Pass Rate: 92.5%
 
 ---
@@ -19,8 +18,7 @@ Jenkins provides suite labels, not feature filenames; labels are shown below.
 - Create new order - ONLINE - MC - POST (tc_mc_ord_post_03)
 **Failure Pattern:** Order POST validation cannot find an adspace for variant 3.
 **Evidence:** `error.ws.caivalidation.non.existing.adspace.for.variant`: no adspace found for variant `3`.
-**Impact:** 2 failures  
-**Confidence:** High
+**Impact:** 2 failures | **Confidence:** High
 
 ## Adapter GET failures
 **Affected Features:** ADAPTERS APIs
@@ -29,8 +27,7 @@ Jenkins provides suite labels, not feature filenames; labels are shown below.
 - get info about mapped adspaces - ADAPTER - GET - success (tc_getadapters05)
 **Failure Pattern:** HTTP 400 instead of 200; separate mapped-adspaces `NullPointerException`.
 **Evidence:** `expected [N200] but found [N400]`; NPE at `WSAdaptersServiceImpl.getInfoAboutMappedAdspaces:255`.
-**Impact:** 2 failures  
-**Confidence:** High
+**Impact:** 2 failures | **Confidence:** High
 
 ## BASE reference and version mismatches
 **Affected Features:** BASE APIs
@@ -39,8 +36,7 @@ Jenkins provides suite labels, not feature filenames; labels are shown below.
 - get information about database-version - BASE - GET - success (tc_getbase22)
 **Failure Pattern:** Returned production-flow data and database version differ from expectations.
 **Evidence:** Expected `[100, FM, PROD]`, found `[100, FM, PROD, PROD2]`; expected `8.8`, found `8.9`.
-**Impact:** 2 failures  
-**Confidence:** Medium
+**Impact:** 2 failures | **Confidence:** Medium
 
 ## Unexpected customer activity results
 **Affected Features:** CUSTOMER APIs
@@ -50,8 +46,7 @@ Jenkins provides suite labels, not feature filenames; labels are shown below.
 - Get salesman activities - success (tc_cust25)
 **Failure Pattern:** Responses contain more results or IDs than expected.
 **Evidence:** Expected 2 results, found 4; expected activity ID lists omit IDs present in actual responses.
-**Impact:** 3 failures  
-**Confidence:** Medium
+**Impact:** 3 failures | **Confidence:** Medium
 
 ## DWL response content mismatches
 **Affected Features:** DWL APIs
@@ -60,8 +55,7 @@ Jenkins provides suite labels, not feature filenames; labels are shown below.
 - get Online rows - DWL - GET - success (tc_getdwl02)
 **Failure Pattern:** Returned rows differ from expectations, including a missing expected row.
 **Evidence:** First expected response row differs; expected order IDs include `906588`, which is absent from the returned list.
-**Impact:** 2 failures  
-**Confidence:** Medium
+**Impact:** 2 failures | **Confidence:** Medium
 
 ## MC order PATCH rejects zero order number
 **Affected Features:** MC ORDER APIs
@@ -69,8 +63,7 @@ Jenkins provides suite labels, not feature filenames; labels are shown below.
 - Update order - ONLINE - MC - PATCH (tc_mc_ord_patch_09)
 **Failure Pattern:** PATCH request is rejected because `ono` is zero.
 **Evidence:** `error.valuevalidation.named.value.must.not.be.null.or.zero`; found `ono=0`.
-**Impact:** 1 failure  
-**Confidence:** High
+**Impact:** 1 failure | **Confidence:** High
 
 ## Print order POST lazy initialization error
 **Affected Features:** PRINT ORDER APIs
@@ -80,5 +73,4 @@ Jenkins provides suite labels, not feature filenames; labels are shown below.
 - create new order without orTypeofsplit - print - success (tc_print_ord_post_08)
 **Failure Pattern:** Order creation cannot access service-fee prices after the persistence session closes.
 **Evidence:** `FServicefee.FServprices, could not initialize proxy - no Session`.
-**Impact:** 3 failures  
-**Confidence:** High
+**Impact:** 3 failures | **Confidence:** High
