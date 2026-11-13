@@ -3,207 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weekly Test Failure Summary — 2026-11-09 → 2026-11-15</title>
+  <title>Weekly Test Failure Summary — 2026-11-06 → 2026-11-12</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #24292f; background: #f6f8fa; margin: 0; padding: 24px; }
     .container { max-width: 1120px; margin: 0 auto; background: #fff; border: 1px solid #d0d7de; border-radius: 10px; padding: 32px; }
     h1 { font-size: 1.8rem; margin: 0 0 16px; padding-bottom: 12px; border-bottom: 1px solid #d8dee4; }
     h2 { font-size: 1.25rem; margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #eaeef2; }
-    h3 { font-size: 1rem; margin: 24px 0 10px; color: #0969da; }
     p, li { margin: 0 0 8px; }
-    ul, ol { margin: 0 0 8px 20px; padding: 0; }
+    ul { margin: 0 0 8px 20px; padding: 0; }
     code { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 4px; padding: 1px 5px; font-size: 12px; font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; }
     .meta { color: #57606a; margin-bottom: 4px; }
-    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
-    table { border-collapse: collapse; width: 100%; min-width: 640px; }
-    th, td { border: 1px solid #d0d7de; padding: 8px 12px; text-align: left; vertical-align: top; }
-    th { background: #f6f8fa; font-weight: 600; white-space: nowrap; }
-    tr:nth-child(even) td { background: #fbfcfe; }
-    .field-table { min-width: 520px; }
-    .field-table th:first-child { width: 150px; }
-    .badge-unstable, .badge-high, .badge-medium, .badge-low, .badge-active-yes, .badge-active-no { display: inline-block; border-radius: 999px; padding: 1px 8px; font-size: 12px; font-weight: 600; }
-    .badge-unstable { background: #fff8c5; color: #7d4e00; }
-    .badge-high, .badge-active-yes { background: #ffebe9; color: #cf222e; }
+    .badge-success, .badge-failure, .badge-high, .badge-medium, .badge-low { display: inline-block; border-radius: 999px; padding: 1px 8px; font-size: 12px; font-weight: 600; }
+    .badge-success { background: #dafbe1; color: #1a7f37; }
+    .badge-failure, .badge-high { background: #ffebe9; color: #cf222e; }
     .badge-medium { background: #fff8c5; color: #9a6700; }
-    .badge-low, .badge-active-no { background: #ddf4ff; color: #0969da; }
-    .pass-rate { font-weight: 600; }
-    a { color: #0969da; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    .badge-low { background: #ddf4ff; color: #0969da; }
     hr { border: 0; border-top: 1px solid #d8dee4; margin: 28px 0; }
     .footer-note { color: #57606a; font-style: italic; }
-    @media (max-width: 768px) { body { padding: 12px; } .container { padding: 20px; } table { min-width: 560px; } }
+    @media (max-width: 768px) { body { padding: 12px; } .container { padding: 20px; } }
   </style>
 </head>
 <body>
 <div class="container">
   <h1>Weekly Test Failure Summary</h1>
-  <p class="meta"><strong>Period:</strong> 2026-11-09 → 2026-11-15</p>
+  <p class="meta"><strong>Period:</strong> 2026-11-06 → 2026-11-12</p>
   <p class="meta"><strong>Generated:</strong> 2026-11-13</p>
-  <p class="meta"><strong>Observed builds:</strong> 1 &nbsp;|&nbsp; <strong>Failed/Unstable builds:</strong> 1 &nbsp;|&nbsp; <strong>Jobs affected:</strong> 1</p>
+  <p class="meta"><strong>Observed builds:</strong> 0 &nbsp;|&nbsp; <strong>Failed/Unstable builds:</strong> 0 &nbsp;|&nbsp; <strong>Jobs affected:</strong> 0</p>
   <hr />
   <h2>Root Cause Groups</h2>
-  <div class="table-wrap"><table>
-    <thead><tr><th>Root Cause</th><th>Affected Jobs</th><th>Total Failures</th><th>First Seen</th><th>Still Active</th><th>Confidence</th></tr></thead>
-    <tbody>
-      <tr><td>Missing adspace for variant 3</td><td><code>automationrunCAI-trunk</code></td><td>2</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-high">High</span></td></tr>
-      <tr><td>Adapter GET failures</td><td><code>automationrunCAI-trunk</code></td><td>2</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-high">High</span></td></tr>
-      <tr><td>BASE reference and version mismatches</td><td><code>automationrunCAI-trunk</code></td><td>2</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-medium">Medium</span></td></tr>
-      <tr><td>Unexpected customer activity results</td><td><code>automationrunCAI-trunk</code></td><td>3</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-medium">Medium</span></td></tr>
-      <tr><td>DWL response content mismatches</td><td><code>automationrunCAI-trunk</code></td><td>2</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-medium">Medium</span></td></tr>
-      <tr><td>MC order PATCH rejects zero order number</td><td><code>automationrunCAI-trunk</code></td><td>1</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-high">High</span></td></tr>
-      <tr><td>Print order POST lazy initialization error</td><td><code>automationrunCAI-trunk</code></td><td>3</td><td>2026-11-13</td><td><span class="badge-active-yes">Yes</span></td><td><span class="badge-high">High</span></td></tr>
-    </tbody>
-  </table></div>
+  <p>No root-cause groups were identified because no build reports were found during this period.</p>
   <hr />
-  <h2>Root Cause Group Details</h2>
-  <p>Jenkins provides suite labels, not feature filenames; suite labels are shown below.</p>
-
-  <h3>1. Missing adspace for variant 3</h3>
-  <div class="table-wrap"><table class="field-table">
-    <tr><th>Field</th><th>Detail</th></tr>
-    <tr><td>Affected Jobs</td><td><code>automationrunCAI-trunk</code></td></tr>
-    <tr><td>Total Failures</td><td>2</td></tr>
-    <tr><td>First Seen</td><td>2026-11-13 (build #190)</td></tr>
-    <tr><td>Still Active</td><td><span class="badge-active-yes">Yes</span></td></tr>
-    <tr><td>Confidence</td><td><span class="badge-high">High</span></td></tr>
-  </table></div>
-  <p><strong>Affected Feature Files &amp; Scenarios:</strong></p>
-  <ul><li><code>ADAPTERS APIs</code> / <code>MC ORDER APIs</code><ul>
-    <li><code>tc_mc_ord_post_05</code> — Create new order (for adapter), ONLINE, MC, POST.</li>
-    <li><code>tc_mc_ord_post_03</code> — Create new order, ONLINE, MC, POST.</li>
-    <li>Both POST validations could not find an adspace for variant 3.</li>
-  </ul></li></ul>
-  <hr />
-
-  <h3>2. Adapter GET failures</h3>
-  <div class="table-wrap"><table class="field-table">
-    <tr><th>Field</th><th>Detail</th></tr>
-    <tr><td>Affected Jobs</td><td><code>automationrunCAI-trunk</code></td></tr>
-    <tr><td>Total Failures</td><td>2</td></tr>
-    <tr><td>First Seen</td><td>2026-11-13 (build #190)</td></tr>
-    <tr><td>Still Active</td><td><span class="badge-active-yes">Yes</span></td></tr>
-    <tr><td>Confidence</td><td><span class="badge-high">High</span></td></tr>
-  </table></div>
-  <p><strong>Affected Feature Files &amp; Scenarios:</strong></p>
-  <ul><li><code>ADAPTERS APIs</code><ul>
-    <li><code>tc_getadapters02</code> — Get mapped data about an order-line; HTTP 400 instead of 200.</li>
-    <li><code>tc_getadapters05</code> — Get info about mapped adspaces; HTTP 400 instead of 200 and a <code>NullPointerException</code>.</li>
-  </ul></li></ul>
-  <hr />
-
-  <h3>3. BASE reference and version mismatches</h3>
-  <div class="table-wrap"><table class="field-table">
-    <tr><th>Field</th><th>Detail</th></tr>
-    <tr><td>Affected Jobs</td><td><code>automationrunCAI-trunk</code></td></tr>
-    <tr><td>Total Failures</td><td>2</td></tr>
-    <tr><td>First Seen</td><td>2026-11-13 (build #190)</td></tr>
-    <tr><td>Still Active</td><td><span class="badge-active-yes">Yes</span></td></tr>
-    <tr><td>Confidence</td><td><span class="badge-medium">Medium</span></td></tr>
-  </table></div>
-  <p><strong>Affected Feature Files &amp; Scenarios:</strong></p>
-  <ul><li><code>BASE APIs</code><ul>
-    <li><code>tc_getbase10</code> — Get non-expired production flows for print; actual response also included <code>PROD2</code>.</li>
-    <li><code>tc_getbase22</code> — Get database version; expected <code>8.8</code>, received <code>8.9</code>.</li>
-  </ul></li></ul>
-  <hr />
-
-  <h3>4. Unexpected customer activity results</h3>
-  <div class="table-wrap"><table class="field-table">
-    <tr><th>Field</th><th>Detail</th></tr>
-    <tr><td>Affected Jobs</td><td><code>automationrunCAI-trunk</code></td></tr>
-    <tr><td>Total Failures</td><td>3</td></tr>
-    <tr><td>First Seen</td><td>2026-11-13 (build #190)</td></tr>
-    <tr><td>Still Active</td><td><span class="badge-active-yes">Yes</span></td></tr>
-    <tr><td>Confidence</td><td><span class="badge-medium">Medium</span></td></tr>
-  </table></div>
-  <p><strong>Affected Feature Files &amp; Scenarios:</strong></p>
-  <ul><li><code>CUSTOMER APIs</code><ul>
-    <li><code>tc_cust29</code> — Customer information objects for salesman and legal person combination; 4 results returned instead of 2.</li>
-    <li><code>tc_cust24</code> — Get customer activities; response included unexpected activity IDs.</li>
-    <li><code>tc_cust25</code> — Get salesman activities; response included unexpected activity IDs.</li>
-  </ul></li></ul>
-  <hr />
-
-  <h3>5. DWL response content mismatches</h3>
-  <div class="table-wrap"><table class="field-table">
-    <tr><th>Field</th><th>Detail</th></tr>
-    <tr><td>Affected Jobs</td><td><code>automationrunCAI-trunk</code></td></tr>
-    <tr><td>Total Failures</td><td>2</td></tr>
-    <tr><td>First Seen</td><td>2026-11-13 (build #190)</td></tr>
-    <tr><td>Still Active</td><td><span class="badge-active-yes">Yes</span></td></tr>
-    <tr><td>Confidence</td><td><span class="badge-medium">Medium</span></td></tr>
-  </table></div>
-  <p><strong>Affected Feature Files &amp; Scenarios:</strong></p>
-  <ul><li><code>DWL APIs</code><ul>
-    <li><code>tc_getdwl01</code> — Get Netsale rows; returned rows differed from expectations.</li>
-    <li><code>tc_getdwl02</code> — Get Online rows; the expected order ID <code>906588</code> was absent from the returned rows.</li>
-  </ul></li></ul>
-  <hr />
-
-  <h3>6. MC order PATCH rejects zero order number</h3>
-  <div class="table-wrap"><table class="field-table">
-    <tr><th>Field</th><th>Detail</th></tr>
-    <tr><td>Affected Jobs</td><td><code>automationrunCAI-trunk</code></td></tr>
-    <tr><td>Total Failures</td><td>1</td></tr>
-    <tr><td>First Seen</td><td>2026-11-13 (build #190)</td></tr>
-    <tr><td>Still Active</td><td><span class="badge-active-yes">Yes</span></td></tr>
-    <tr><td>Confidence</td><td><span class="badge-high">High</span></td></tr>
-  </table></div>
-  <p><strong>Affected Feature Files &amp; Scenarios:</strong></p>
-  <ul><li><code>MC ORDER APIs</code><ul>
-    <li><code>tc_mc_ord_patch_09</code> — Update order, ONLINE, MC, PATCH; rejected because <code>ono=0</code>.</li>
-  </ul></li></ul>
-  <hr />
-
-  <h3>7. Print order POST lazy initialization error</h3>
-  <div class="table-wrap"><table class="field-table">
-    <tr><th>Field</th><th>Detail</th></tr>
-    <tr><td>Affected Jobs</td><td><code>automationrunCAI-trunk</code></td></tr>
-    <tr><td>Total Failures</td><td>3</td></tr>
-    <tr><td>First Seen</td><td>2026-11-13 (build #190)</td></tr>
-    <tr><td>Still Active</td><td><span class="badge-active-yes">Yes</span></td></tr>
-    <tr><td>Confidence</td><td><span class="badge-high">High</span></td></tr>
-  </table></div>
-  <p><strong>Affected Feature Files &amp; Scenarios:</strong></p>
-  <ul><li><code>PRINT ORDER APIs</code><ul>
-    <li><code>tc_print_ord_post_01</code> — Create new print order.</li>
-    <li><code>tc_print_ord_post_07</code> — Create new print order with <code>orTypeofsplit</code>.</li>
-    <li><code>tc_print_ord_post_08</code> — Create new print order without <code>orTypeofsplit</code>.</li>
-    <li>All three failed when service-fee prices were accessed after the persistence session closed.</li>
-  </ul></li></ul>
-  <hr />
-
   <h2>Key Observations</h2>
   <ul>
-    <li>The only build report dated in this reporting window is <code>automationrunCAI-trunk</code> build #190 (2026-11-13).</li>
-    <li>Build #190 was <code>UNSTABLE</code>: 15 of 199 tests failed, for a 92.5% pass rate.</li>
-    <li>The seven root-cause groups account for all 15 reported failures; all are present in the latest observed build.</li>
+    <li>No build reports were found for 2026-11-06 through 2026-11-12.</li>
+    <li>Zero builds, failed/unstable builds, and affected jobs were observed during the period.</li>
+    <li>No findings or actions from builds outside this period are included.</li>
   </ul>
   <hr />
-
-  <h2>Recommended Actions</h2>
-  <ol>
-    <li><strong>Check variant-3 test data</strong> — confirm the configured adspace is present for the order POST scenarios.</li>
-    <li><strong>Investigate Adapter GET responses</strong> — address the unexpected HTTP 400 responses and the mapped-adspaces null dereference.</li>
-    <li><strong>Reconcile BASE expectations</strong> — verify the production-flow data and database version expected by the tests.</li>
-    <li><strong>Review customer activity data</strong> — confirm expected result counts and activity IDs match the test environment.</li>
-    <li><strong>Validate DWL test data</strong> — confirm expected rows and order IDs match the returned results.</li>
-    <li><strong>Validate PATCH inputs</strong> — ensure the test supplies a nonzero order number where required.</li>
-    <li><strong>Fix print-order session handling</strong> — ensure service-fee prices are initialized while the persistence session is available.</li>
-  </ol>
-  <hr />
-
   <h2>Latest Build Triage Snapshot</h2>
-  <div class="table-wrap"><table>
-    <thead><tr><th>Build</th><th>Date</th><th>Status</th><th>Pass Rate</th></tr></thead>
-    <tbody><tr>
-      <td><a href="../reports/build-failures/automationrunCAI-trunk/build-190.md">automationrunCAI-trunk #190</a></td>
-      <td>2026-11-13</td>
-      <td><span class="badge-unstable">UNSTABLE</span></td>
-      <td class="pass-rate">92.5%</td>
-    </tr></tbody>
-  </table></div>
+  <p>No builds were reported during this period.</p>
   <hr />
   <p class="footer-note">This dashboard is regenerated weekly from the build reports in <code>reports/build-failures/</code>.</p>
 </div>

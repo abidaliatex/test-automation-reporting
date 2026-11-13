@@ -1,176 +1,28 @@
 # Weekly Test Failure Summary
 
-**Period:** 2026-11-09 → 2026-11-15<br>
+**Period:** 2026-11-06 → 2026-11-12<br>
 **Generated:** 2026-11-13<br>
-**Observed builds:** 1 | **Failed/Unstable builds:** 1 | **Jobs affected:** 1
+**Observed builds:** 0 | **Failed/Unstable builds:** 0 | **Jobs affected:** 0
 
 ---
 
 ## Root Cause Groups
 
-| Root Cause | Affected Jobs | Total Failures | First Seen | Still Active | Confidence |
-|---|---|---:|---|---|---|
-| Missing adspace for variant 3 | `automationrunCAI-trunk` | 2 | 2026-11-13 | Yes | High |
-| Adapter GET failures | `automationrunCAI-trunk` | 2 | 2026-11-13 | Yes | High |
-| BASE reference and version mismatches | `automationrunCAI-trunk` | 2 | 2026-11-13 | Yes | Medium |
-| Unexpected customer activity results | `automationrunCAI-trunk` | 3 | 2026-11-13 | Yes | Medium |
-| DWL response content mismatches | `automationrunCAI-trunk` | 2 | 2026-11-13 | Yes | Medium |
-| MC order PATCH rejects zero order number | `automationrunCAI-trunk` | 1 | 2026-11-13 | Yes | High |
-| Print order POST lazy initialization error | `automationrunCAI-trunk` | 3 | 2026-11-13 | Yes | High |
-
----
-
-## Root Cause Group Details
-
-Jenkins provides suite labels, not feature filenames; suite labels are shown below.
-
-### 1. Missing adspace for variant 3
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-trunk` |
-| Total Failures | 2 |
-| First Seen | 2026-11-13 (build #190) |
-| Still Active | Yes |
-| Confidence | High |
-
-**Affected Feature Files & Scenarios:**
-- `ADAPTERS APIs` / `MC ORDER APIs`
-  - `tc_mc_ord_post_05` — Create new order (for adapter), ONLINE, MC, POST.
-  - `tc_mc_ord_post_03` — Create new order, ONLINE, MC, POST.
-  - Both POST validations could not find an adspace for variant 3.
-
----
-
-### 2. Adapter GET failures
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-trunk` |
-| Total Failures | 2 |
-| First Seen | 2026-11-13 (build #190) |
-| Still Active | Yes |
-| Confidence | High |
-
-**Affected Feature Files & Scenarios:**
-- `ADAPTERS APIs`
-  - `tc_getadapters02` — Get mapped data about an order-line; HTTP 400 instead of 200.
-  - `tc_getadapters05` — Get info about mapped adspaces; HTTP 400 instead of 200 and a `NullPointerException`.
-
----
-
-### 3. BASE reference and version mismatches
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-trunk` |
-| Total Failures | 2 |
-| First Seen | 2026-11-13 (build #190) |
-| Still Active | Yes |
-| Confidence | Medium |
-
-**Affected Feature Files & Scenarios:**
-- `BASE APIs`
-  - `tc_getbase10` — Get non-expired production flows for print; actual response also included `PROD2`.
-  - `tc_getbase22` — Get database version; expected `8.8`, received `8.9`.
-
----
-
-### 4. Unexpected customer activity results
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-trunk` |
-| Total Failures | 3 |
-| First Seen | 2026-11-13 (build #190) |
-| Still Active | Yes |
-| Confidence | Medium |
-
-**Affected Feature Files & Scenarios:**
-- `CUSTOMER APIs`
-  - `tc_cust29` — Customer information objects for salesman and legal person combination; 4 results returned instead of 2.
-  - `tc_cust24` — Get customer activities; response included unexpected activity IDs.
-  - `tc_cust25` — Get salesman activities; response included unexpected activity IDs.
-
----
-
-### 5. DWL response content mismatches
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-trunk` |
-| Total Failures | 2 |
-| First Seen | 2026-11-13 (build #190) |
-| Still Active | Yes |
-| Confidence | Medium |
-
-**Affected Feature Files & Scenarios:**
-- `DWL APIs`
-  - `tc_getdwl01` — Get Netsale rows; returned rows differed from expectations.
-  - `tc_getdwl02` — Get Online rows; the expected order ID `906588` was absent from the returned rows.
-
----
-
-### 6. MC order PATCH rejects zero order number
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-trunk` |
-| Total Failures | 1 |
-| First Seen | 2026-11-13 (build #190) |
-| Still Active | Yes |
-| Confidence | High |
-
-**Affected Feature Files & Scenarios:**
-- `MC ORDER APIs`
-  - `tc_mc_ord_patch_09` — Update order, ONLINE, MC, PATCH; rejected because `ono=0`.
-
----
-
-### 7. Print order POST lazy initialization error
-
-| Field | Detail |
-|-------|--------|
-| Affected Jobs | `automationrunCAI-trunk` |
-| Total Failures | 3 |
-| First Seen | 2026-11-13 (build #190) |
-| Still Active | Yes |
-| Confidence | High |
-
-**Affected Feature Files & Scenarios:**
-- `PRINT ORDER APIs`
-  - `tc_print_ord_post_01` — Create new print order.
-  - `tc_print_ord_post_07` — Create new print order with `orTypeofsplit`.
-  - `tc_print_ord_post_08` — Create new print order without `orTypeofsplit`.
-  - All three failed when service-fee prices were accessed after the persistence session closed.
+No root-cause groups were identified because no build reports were found during this period.
 
 ---
 
 ## Key Observations
 
-- The only build report dated in this reporting window is `automationrunCAI-trunk` build #190 (2026-11-13).
-- Build #190 was `UNSTABLE`: 15 of 199 tests failed, for a 92.5% pass rate.
-- The seven root-cause groups account for all 15 reported failures; all are present in the latest observed build.
-
----
-
-## Recommended Actions
-
-1. **Check variant-3 test data** — confirm the configured adspace is present for the order POST scenarios.
-2. **Investigate Adapter GET responses** — address the unexpected HTTP 400 responses and the mapped-adspaces null dereference.
-3. **Reconcile BASE expectations** — verify the production-flow data and database version expected by the tests.
-4. **Review customer activity data** — confirm expected result counts and activity IDs match the test environment.
-5. **Validate DWL test data** — confirm expected rows and order IDs match the returned results.
-6. **Validate PATCH inputs** — ensure the test supplies a nonzero order number where required.
-7. **Fix print-order session handling** — ensure service-fee prices are initialized while the persistence session is available.
+- No build reports were found for 2026-11-06 through 2026-11-12.
+- Zero builds, failed/unstable builds, and affected jobs were observed during the period.
+- No findings or actions from builds outside this period are included.
 
 ---
 
 ## Latest Build Triage Snapshot
 
-| Build | Date | Status | Pass Rate |
-|---|---|---|---|
-| [automationrunCAI-trunk #190](../reports/build-failures/automationrunCAI-trunk/build-190.md) | 2026-11-13 | UNSTABLE | 92.5% |
+No builds were reported during this period.
 
 ---
 
