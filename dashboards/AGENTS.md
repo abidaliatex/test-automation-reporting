@@ -23,6 +23,12 @@ Do NOT run automatically during build triage tasks.
 ## Behaviour Guidelines
 - **Do** create or update files in `dashboards/` based on the latest reports.
 
+## Reporting Period and Empty Weeks
+- Use the generation date as the end reference, and report only the seven calendar dates immediately before it. The generation date itself is excluded.
+- Set the period start to the generation date minus seven days and the period end to the generation date minus one day. For example, a report generated on `2026-11-13` covers `2026-11-06` through `2026-11-12`.
+- Include only build reports whose build date falls within that inclusive range. Do not use the week containing the generation date or extend the range to include older builds.
+- If no build reports fall within the period, still generate both weekly summaries. State clearly that no builds were executed / no build reports were found during the period; show zero observed builds, zero failed/unstable builds, and zero affected jobs. Show no root-cause groups, and mark the latest-build snapshot as none for the period. Do not carry forward findings or actions from builds outside the period.
+
 ## Root Cause Groups Summary
 After scanning all build reports, extract and group root causes across all jobs:
 
