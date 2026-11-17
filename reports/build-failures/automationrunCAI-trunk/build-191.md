@@ -2,12 +2,12 @@
 
 ## Build Summary
 
-Build: [191](https://crossadv.atex.com/jenkins/job/automationrunCAI-trunk/191/)  
-Date: 2026-11-17 03:39:51 UTC  
-Status: UNSTABLE  
-Total Tests: 199  
-Passed: 184  
-Failed: 15  
+Build: [191](https://crossadv.atex.com/jenkins/job/automationrunCAI-trunk/191/)
+Date: 2026-11-17 03:39:51 UTC
+Status: UNSTABLE
+Total Tests: 199
+Passed: 184
+Failed: 15
 Pass Rate: 92.5%
 
 ---
@@ -32,8 +32,7 @@ Jenkins provides API suite labels, not `.feature` filenames; the suite labels ar
 - `error.ws.caivalidation.non.existing.adspace.for.variant`: “No adspace found for variant with id '3'.”
 - Both scenarios expected HTTP 200 and received HTTP 400.
 
-**Impact:** 2 failures  
-**Confidence:** High
+**Impact:** 2 failures | **Confidence:** High
 
 ## Adapter GET failures
 
@@ -50,8 +49,7 @@ Jenkins provides API suite labels, not `.feature` filenames; the suite labels ar
 - `tc_getadapters02`: expected HTTP 200, received HTTP 400.
 - `tc_getadapters05`: HTTP 500 with `NullPointerException` at `WSAdaptersServiceImpl.getInfoAboutMappedAdspaces:255`.
 
-**Impact:** 2 failures  
-**Confidence:** Medium
+**Impact:** 2 failures | **Confidence:** Medium
 
 ## BASE response mismatches
 
@@ -68,8 +66,7 @@ Jenkins provides API suite labels, not `.feature` filenames; the suite labels ar
 - Expected production flows `[100, FM, PROD]`; actual response also contains `PROD2`.
 - Expected database version `8.8`; actual response is `8.9`.
 
-**Impact:** 2 failures  
-**Confidence:** Medium
+**Impact:** 2 failures | **Confidence:** Medium
 
 ## Unexpected customer results
 
@@ -87,8 +84,7 @@ Jenkins provides API suite labels, not `.feature` filenames; the suite labels ar
 - `tc_cust29`: expected 2 results, received 4.
 - `tc_cust24` and `tc_cust25`: returned activity ID lists include IDs absent from expected lists.
 
-**Impact:** 3 failures  
-**Confidence:** Medium
+**Impact:** 3 failures | **Confidence:** Medium
 
 ## DWL response mismatches
 
@@ -105,8 +101,7 @@ Jenkins provides API suite labels, not `.feature` filenames; the suite labels ar
 - `tc_getdwl01`: row for order `906191` has timestamp `2026-06-23T14:06:28`; expected `2023-08-29T12:30:19`.
 - `tc_getdwl02`: expected order ID `906588`, which is absent from the returned list.
 
-**Impact:** 2 failures  
-**Confidence:** Medium
+**Impact:** 2 failures | **Confidence:** Medium
 
 ## MC order PATCH rejects zero order number
 
@@ -120,8 +115,7 @@ Jenkins provides API suite labels, not `.feature` filenames; the suite labels ar
 
 **Evidence:** `error.valuevalidation.named.value.must.not.be.null.or.zero`; expected HTTP 200, received HTTP 400.
 
-**Impact:** 1 failure  
-**Confidence:** High
+**Impact:** 1 failure | **Confidence:** High
 
 ## Print order POST lazy initialization error
 
@@ -137,5 +131,4 @@ Jenkins provides API suite labels, not `.feature` filenames; the suite labels ar
 
 **Evidence:** `FServicefee.FServprices, could not initialize proxy - no Session` appears in all three failures.
 
-**Impact:** 3 failures  
-**Confidence:** High
+**Impact:** 3 failures | **Confidence:** High
