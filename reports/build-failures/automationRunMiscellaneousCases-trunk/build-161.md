@@ -2,12 +2,12 @@
 
 ## Build Summary
 
-Build: [161](https://crossadv.atex.com/jenkins/job/automationRunMiscellaneousCases-trunk/161/)  
-Date: 2026-11-19 01:11:35 UTC  
-Status: UNSTABLE  
-Total Tests: 108  
-Passed: 106  
-Failed: 2  
+- Build: [161](https://crossadv.atex.com/jenkins/job/automationRunMiscellaneousCases-trunk/161/)
+- Date: 2026-11-19 01:11:35 UTC
+- Status: UNSTABLE
+- Total Tests: 108
+- Passed: 106
+- Failed: 2
 Pass Rate: 98.1%
 
 ---
