@@ -1,12 +1,12 @@
 ## Build Summary
 
-Build: [192](https://crossadv.atex.com/jenkins/job/automationrunCAI-trunk/192/)  
-Date: 2026-11-19 02:10:18 UTC  
-Status: UNSTABLE  
-Total Tests: 260  
-Passed: 244  
-Failed: 16  
-Pass Rate: 93.85%
+- Build: [192](https://crossadv.atex.com/jenkins/job/automationrunCAI-trunk/192/)
+- Date: 2026-11-19 02:10:18 UTC
+- Status: UNSTABLE
+- Total Tests: 260
+- Passed: 244
+- Failed: 16
+- Pass Rate: 93.85%
 
 ---
 
