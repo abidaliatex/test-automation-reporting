@@ -1,11 +1,11 @@
 ## Build Summary
 
-Build: [167](https://crossadv.atex.com/jenkins/job/automationRunOrderReportVerification-trunk/167/)  
-Date: 2026-11-23 03:35:56 UTC  
-Status: UNSTABLE  
-Total Tests: 108  
-Passed: 101  
-Failed: 7  
+Build: [167](https://crossadv.atex.com/jenkins/job/automationRunOrderReportVerification-trunk/167/)<br>
+Date: 2026-11-23 03:35:56 UTC<br>
+Status: UNSTABLE<br>
+Total Tests: 108<br>
+Passed: 101<br>
+Failed: 7<br>
 Pass Rate: 93.52%
 
 ---
@@ -29,7 +29,8 @@ Jenkins exposes the failing scenario-step names and feature locations, but not t
 - Expected 103.00, found 102.00 (2 failures).
 - Expected 73.00, found 71.00.
 
-**Impact:** 4 failures  
+**Impact:** 4 failures
+
 **Confidence:** Medium
 
 ## Filtered Order Number Mismatch
@@ -46,7 +47,8 @@ Jenkins exposes the failing scenario-step names and feature locations, but not t
 - Expected empty, found 90000353.
 - Expected empty, found 926332.
 
-**Impact:** 2 failures  
+**Impact:** 2 failures
+
 **Confidence:** Medium
 
 ## Net Column Visibility Timeout
@@ -62,5 +64,6 @@ Jenkins exposes the failing scenario-step names and feature locations, but not t
 **Evidence:**
 - The wait for `//span[contains(text(),'Net')]//parent::div//parent::th` timed out after 10 seconds.
 
-**Impact:** 1 failure  
+**Impact:** 1 failure
+
 **Confidence:** Medium
